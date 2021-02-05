@@ -5,10 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * todo : extends BaseTimeInfo
@@ -26,5 +23,22 @@ public class Member {
 
     private String name;
 
+    @Enumerated(EnumType.STRING)
     private Authority authority;
+
+    /**
+     * static create method
+     */
+    public static Member createMember(SignUpDto dto){
+        Member member = new Member();
+        member.name = dto.getName();
+        member.password = dto.getPassword();
+        member.email = dto.getEmail();
+        member.authority = Authority.ROLE_PRE;
+        return member;
+    }
+
+    public void successEmailValid() {
+        authority = Authority.ROLE_USER;
+    }
 }

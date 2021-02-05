@@ -8,11 +8,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
+@Component
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
@@ -20,17 +23,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        List<Member> member = memberRepository.findByEmail(email);
 
-        if(member == null || member.size() == 0)
-            throw new UsernameNotFoundException("NO USER");
+        Member member = memberRepository
+                .findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException(email));
 
-
-        Member getMember = member.get(0);
         List<GrantedAuthority> roles = new ArrayList<>();
 
-        roles.add(new SimpleGrantedAuthority(getMember.getAuthority().name()));
-        MemberContext memberContext = new MemberContext(member.get(0), roles);
+        roles.add(new SimpleGrantedAuthority(member.getAuthority().name()));
+        MemberContext memberContext = new MemberContext(member, roles);
 
         return memberContext;
     }
