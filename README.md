@@ -23,3 +23,9 @@
 - v 1.1 GlobalExceptionHandler
 	- 컨트롤러에서 발생하는 예외처리
 	- 시큐리티 로그아웃
+
+- v 1.2 BaseTimInfo
+	- @EnableJpaAuditing
+	- @MappedSuperclass
+	- @EntityListeners(AuditingentityListener.class)
+	- 등록일, 수정일 자동 업데이트 기능

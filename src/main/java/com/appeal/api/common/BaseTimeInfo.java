@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  * @EnableJpaAuditing 를 main 위에 어노테이션으로 붙여 활성화시킨다
  * @EntityListeners(AuditingEntityListener.class)를 통해 이 클래스를 적용 대상으로 지정한다
  */
-//@MappedSuperclass @Getter @EntityListeners(AuditingEntityListener.class)
+@MappedSuperclass @Getter @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseTimeInfo {
 
     @CreatedDate
