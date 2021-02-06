@@ -20,6 +20,7 @@ spring:
             enable: true
     password: cjswoduddn
     username: fourthcow7884@gmail.com
+    ##
 
 
 logging:
