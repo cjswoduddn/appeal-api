@@ -25,15 +25,6 @@ public class MemberService {
         mailService.sendValidMail(dto.getEmail(), member.getId());
     }
 
-
-    private void validDuplicateEmail(SignUpDto dto) {
-        memberRepository
-                .findByEmail(dto.getEmail())
-                .ifPresent(user->{
-                    throw new DuplicateEmailException(dto.getEmail()+"은(는) 이미 등록된 이메일입니당");
-                });
-    }
-
     public void validSignUp(String code) {
         Long memberId =
                 mailService
@@ -45,4 +36,13 @@ public class MemberService {
                 .orElseThrow(()->new NoUserFoundException())
                 .successEmailValid();
     }
+
+    private void validDuplicateEmail(SignUpDto dto) {
+        memberRepository
+                .findByEmail(dto.getEmail())
+                .ifPresent(user->{
+                    throw new DuplicateEmailException(dto.getEmail()+"은(는) 이미 등록된 이메일입니당");
+                });
+    }
+
 }

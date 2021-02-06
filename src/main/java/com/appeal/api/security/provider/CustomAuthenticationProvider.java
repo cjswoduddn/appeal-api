@@ -1,5 +1,7 @@
 package com.appeal.api.security.provider;
 
+import com.appeal.api.common.Authority;
+import com.appeal.api.common.exception.NoValidAccountException;
 import com.appeal.api.security.sevice.MemberContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -27,6 +29,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         Object credentials = authentication.getCredentials();
         if(!passwordEncoder.matches((String)credentials, memberContext.getPassword()))
             throw new BadCredentialsException("password not matching!");
+
+        if(memberContext.getMember().getAuthority().equals(Authority.ROLE_PRE))
+            throw new NoValidAccountException("미인증 계정입니다");
+
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 memberContext.getMember(), null, memberContext.getAuthorities()

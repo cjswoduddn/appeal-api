@@ -29,5 +29,4 @@ public class MemberController {
                 .body("인증 성공! 로그인하세용");
     }
 
-
 }

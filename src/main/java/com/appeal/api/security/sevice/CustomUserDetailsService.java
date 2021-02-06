@@ -1,8 +1,11 @@
 package com.appeal.api.security.sevice;
 
+import com.appeal.api.common.Authority;
+import com.appeal.api.common.exception.NoValidAccountException;
 import com.appeal.api.member.Member;
 import com.appeal.api.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
