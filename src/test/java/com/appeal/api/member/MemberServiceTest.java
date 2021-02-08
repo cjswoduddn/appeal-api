@@ -4,12 +4,16 @@ import com.appeal.api.common.exception.DuplicateEmailException;
 import com.appeal.api.common.exception.IllegalEmailValidAccessExcetion;
 import com.appeal.api.common.exception.NoUserFoundException;
 import com.appeal.api.common.util.MailService;
+import org.hibernate.annotations.GeneratorType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -85,4 +89,28 @@ class MemberServiceTest {
     public void successVaildCode() throws Exception{
     }
 
+    @Test
+    public void mapTest() throws Exception{
+        //given
+        Map<String, String> map = new HashMap<>();
+
+        //when
+        String hello = map.get("Hello");
+
+        //then
+        System.out.println(hello);
+    }
+
+
+    static class Foo{
+        public String hello;
+
+        public String getHello() {
+            return hello;
+        }
+
+        public void setHello(String hello) {
+            this.hello = hello;
+        }
+    }
 }
