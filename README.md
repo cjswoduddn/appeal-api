@@ -29,3 +29,13 @@
 	- @MappedSuperclass
 	- @EntityListeners(AuditingentityListener.class)
 	- 등록일, 수정일 자동 업데이트 기능
+
+- v 1.3 Portfolio
+	- PortfolioController
+		- AwsS3Service
+	- PortfolioService
+		- createPortfolio
+		- save
+	- PortfolioFactory
+		- dtype을 통해 값 생성
+
