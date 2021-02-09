@@ -11,8 +11,8 @@ import javax.persistence.*;
 import java.util.Map;
 
 @Entity @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@DiscriminatorColumn
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
 public class Portfolio extends BaseTimeInfo {
 
     @Id @GeneratedValue @Column(name = "PORTFOLIO_ID")

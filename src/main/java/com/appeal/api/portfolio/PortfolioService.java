@@ -1,5 +1,6 @@
 package com.appeal.api.portfolio;
 
+import com.appeal.api.common.exception.NoPortfolioFoundException;
 import com.appeal.api.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -18,5 +19,10 @@ public class PortfolioService {
         Portfolio portfolio = Portfolio.createPortfolio(map, (Member) authentication.getPrincipal());
         portfolioRepository.save(portfolio);
         return portfolio.getId();
+    }
+
+    public Portfolio getById(Long id) {
+        return portfolioRepository.findById(id)
+                .orElseThrow(()->new NoPortfolioFoundException());
     }
 }
