@@ -1,41 +1,21 @@
 # APPEAL PROJECT BACKEND API
+![logo](./images/logo.PNG)
 
-## 프로젝트 환경 정보(최신화 2021-02-04)
-- Group : com.appeal
-- Artifact : api
-- Gradle
-- JAVA 11
-- lombok
-- Spring Web
-- Spring Security
-- Spring Data JPA
-- H2 Database(dev)
-- MySQL(real)
-- Validation
-- Java Mail Sender
-- implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.6.3") -> 쿼리 확인 배포 시 삭제예정
+## 프로젝트 아키텍처
+![architecture](./images/architecturev1.PNG)
 
-## 프로젝트 버젼
-- v 1.0 멤버
-	- 멤버 로그인, 회원가입 구현
-	- 이메일 인증 서비스 구현
+## 도움받은 기술
+![helper](./images/helperv2.PNG)
 
-- v 1.1 GlobalExceptionHandler
-	- 컨트롤러에서 발생하는 예외처리
-	- 시큐리티 로그아웃
+- spring web
+- spring data-jpa
+- spring mail
+- spring validation
+- p6spy(개발환경에서 쿼리와 파라미터 요청 콘솔로 확인)
 
-- v 1.2 BaseTimInfo
-	- @EnableJpaAuditing
-	- @MappedSuperclass
-	- @EntityListeners(AuditingentityListener.class)
-	- 등록일, 수정일 자동 업데이트 기능
+## 테이블 설계
+![er_diagram](./images/er_diagramv1.PNG)
 
-- v 1.3 Portfolio
-	- PortfolioController
-		- AwsS3Service
-	- PortfolioService
-		- createPortfolio
-		- save
-	- PortfolioFactory
-		- dtype을 통해 값 생성
-
+## 개발환경
+- java 11
+- spring boot 2.4.2
