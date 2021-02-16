@@ -26,4 +26,9 @@ public class MemberController {
                 .ok()
                 .body("인증 성공! 로그인하세용");
     }
+
+    @GetMapping("/test")
+    public ResponseEntity test(){
+        return ResponseEntity.ok("HELLO");
+    }
 }
