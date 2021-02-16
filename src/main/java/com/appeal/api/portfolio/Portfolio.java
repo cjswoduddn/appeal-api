@@ -18,7 +18,7 @@ public class Portfolio extends BaseTimeInfo {
     @Id @GeneratedValue @Column(name = "PORTFOLIO_ID")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
     private String thumbnailUrl;
@@ -37,7 +37,7 @@ public class Portfolio extends BaseTimeInfo {
 
     /**
      * map을 효과적으로 반복하지 못하고 각각의 필드에 일일이 대입하는 식으로 코딩했었다.
-     * 그런데, map에는 인스턴스의 필드명과 정확하게 일치하는(스펙을 그렇게 맞췄으니까()
+     * 그런데, map에는 인스턴스의 필드명과 정확하게 일치하는(스펙을 그렇게 맞췄으니까)
      * key값에 value가 저장되어 있고 이를 잘 활용할 방법을 생각해봤다.
      * 역시나 해답은 존재하고, 요즘 공부하고 있는 reflection을 이용해서
      * String으로 필드를 찾고 값을 세팅할 수 있었다.
