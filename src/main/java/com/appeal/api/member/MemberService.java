@@ -22,7 +22,7 @@ public class MemberService {
         validDuplicateEmail(dto);
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         Member member = memberRepository.save(Member.createMember(dto));
-        mailService.sendValidMail(dto.getEmail(), member.getId());
+//        mailService.sendValidMail(dto.getEmail(), member.getId());
     }
 
     public void validSignUp(String code) {
