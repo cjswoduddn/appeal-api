@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTimeInfo {
 
-    @Id @GeneratedValue @Column(name = "MEMBER_ID")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "MEMBER_ID")
     private Long id;
 
     @Column(unique = true)
