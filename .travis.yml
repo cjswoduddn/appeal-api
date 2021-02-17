@@ -15,7 +15,7 @@ cache:
 before_install:
   - chmod +x gradlew
   - mkdir ./src/main/resources
-  - echo -e spring:\n\tdatasource:\n\t\turl: $RDS_URL > ./src/main/resources/application.yml
+  - echo -e spring:\\n\\tdatasource:\\n\\t\\turl: $RDS_URL >> ./src/main/resources/application.yml
   - echo -e \\n\\t\\tusername: $RDS_USERNAME\\n\\t\\t > ./src/main/resources/application.yml
   - echo -e password: $RDS_PASSWORD\\n\\t\\t > ./src/main/resources/application.yml
   - echo -e driver-class-name: com.mysql.cj.jdbc.Driver\\n\\t > ./src/main/resources/application.yml
