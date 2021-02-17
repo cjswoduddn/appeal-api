@@ -15,6 +15,31 @@ cache:
 before_install:
   - chmod +x gradlew
   - mkdir ./src/main/resources
+  - echo -e spring:\\n\\tdatasource:\\n\\t\\turl: $RDS_URL > ./src/main/resources/application.yml
+  - echo -e \\n\\t\\tusername: $RDS_USERNAME\\n\\t\\t > ./src/main/resources/application.yml
+  - echo -e password: $RDS_PASSWORD\\n\\t\\t > ./src/main/resources/application.yml
+  - echo -e driver-class-name: com.mysql.cj.jdbc.Driver\\n\\t > ./src/main/resources/application.yml
+  - echo -e mail:\\n\\t\\thost: smtp.gmail.com\\n\\t\\t > ./src/main/resources/application.yml
+  - echo -e port: 587\\n\\t\\t > ./src/main/resources/application.yml
+  - echo -e properties:\\n\\t\\t\\t > ./src/main/resources/application.yml
+  - echo -e mail:\\n\\t\\t\\t\\t > ./src/main/resources/application.yml
+  - echo -e smtp:\\n\\t\\t\\t\\t\\t > ./src/main/resources/application.yml
+  - echo -e auth: true\\n\\t\\t\\t\\t\\t > ./src/main/resources/application.yml
+  - echo -e starttls:\\n\\t\\t\\t\\t\\t\\t > ./src/main/resources/application.yml
+  - echo -e enable: true\\n\\t\\t > ./src/main/resources/application.yml
+  - echo -e password: $GMAIL_PASSWORD\\n\\t\\t > ./src/main/resources/application.yml
+  - echo -e username: GMAIL_USERNAME\\n > ./src/main/resources/application.yml
+  - echo -e cloud:\\n\\t > ./src/main/resources/application.yml
+  - echo -e aws:\\n\\t\\t > ./src/main/resources/application.yml
+  - echo -e credentials:\\n\\t\\t\\t > ./src/main/resources/application.yml
+  - echo -e accessKey: $S3_ACCESS_KEY\\n\\t\\t\\t > ./src/main/resources/application.yml
+  - echo -e secretKey: $S3_SECRET_KEY\\n\\t\\t > ./src/main/resources/application.yml
+  - echo -e s3:\\n\\t\\t\\t > ./src/main/resources/application.yml
+  - echo -e bucket: cjswoduddn-test/cjswoduddn\\n\\t\\t > ./src/main/resources/application.yml
+  - echo -e region:\\n\\t\\t\\t > ./src/main/resources/application.yml
+  - echo -e static: ap-northeast-2\\n\\t\\t > ./src/main/resources/application.yml
+  - echo -e stack:\\n\\t\\t\\t > ./src/main/resources/application.yml
+  - echo -e auto: false > ./src/main/resources/application.yml
 
 script: "./gradlew clean build"
 
