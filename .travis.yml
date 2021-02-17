@@ -73,7 +73,7 @@ deploy:
     application: code-deploy
     deployment_group: appeal-api
     region: ap-northeast-2
-    wait-until-deployed: true
+    wait_until_deployed: true
     on:
       branch: main
 
