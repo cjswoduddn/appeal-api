@@ -60,7 +60,7 @@ deploy:
     skip_cleanup: true
     acl: private
     local_dir: deploy
-    wait-until-deployed: true
+    wait_until_deployed: true
     on:
       branch: main
 
@@ -68,12 +68,14 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
     bucket: appeal-api-from-travis-build
-    key: appeal-api-webservice.zip
+    key: deploy/appeal-api-webservice.zip
     bundle_type: zip
     application: code-deploy
     deployment_group: appeal-api
     region: ap-northeast-2
     wait_until_deployed: true
+    on:
+      branch: main
 
 notifications:
   email:
