@@ -14,42 +14,17 @@ cache:
 
 before_install:
   - chmod +x gradlew
-  - mkdir ./src/main/resources
-  - touch ./src/main/resources/application.yml
-  - echo -e spring:\\n\\t > ./src/main/resources/application.yml
-  - echo -e datasource:\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e url:$RDS_URL\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e username:$RDS_USERNAME\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e password:$RDS_PASSWORD\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e driver-class-name:com.mysql.cj.jdbc.Driver\\n\\t > ./src/main/resources/application.yml
-  - echo -e mail:\\n\\t\\thost:smtp.gmail.com\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e port:587\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e properties:\\n\\t\\t\\t > ./src/main/resources/application.yml
-  - echo -e mail:\\n\\t\\t\\t\\t > ./src/main/resources/application.yml
-  - echo -e smtp:\\n\\t\\t\\t\\t\\t > ./src/main/resources/application.yml
-  - echo -e auth:true\\n\\t\\t\\t\\t\\t > ./src/main/resources/application.yml
-  - echo -e starttls:\\n\\t\\t\\t\\t\\t\\t > ./src/main/resources/application.yml
-  - echo -e enable:true\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e password:$GMAIL_PASSWORD\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e username:$GMAIL_USERNAME\\n > ./src/main/resources/application.yml
-  - echo -e cloud:\\n\\t > ./src/main/resources/application.yml
-  - echo -e aws:\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e credentials:\\n\\t\\t\\t > ./src/main/resources/application.yml
-  - echo -e accessKey:$S3_ACCESS_KEY\\n\\t\\t\\t > ./src/main/resources/application.yml
-  - echo -e secretKey:$S3_SECRET_KEY\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e s3:\\n\\t\\t\\t > ./src/main/resources/application.yml
-  - echo -e bucket:cjswoduddn-test/cjswoduddn\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e region:\\n\\t\\t\\t > ./src/main/resources/application.yml
-  - echo -e static:ap-northeast-2\\n\\t\\t > ./src/main/resources/application.yml
-  - echo -e stack:\\n\\t\\t\\t > ./src/main/resources/application.yml
-  - echo -e auto:false > ./src/main/resources/application.yml
 
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r appeal-api-webservice *
-  - mkdir -p deploy
-  - mv appeal-api-webservice.zip deploy/appeal-api-webservice.zip
+  - mkdir -p before-deploy # zip에 포함시킬 파일들을 담을 디렉토리 생성
+  - cp scripts/*.sh before-deploy/
+  - cp appspec.yml before-deploy/
+  - cp build/libs/*.jar before-deploy/
+  - cd before-deploy && zip -r before-deploy * # before-deploy로 이동후 전체 압축
+  - cd ../ && mkdir -p deploy # 상위 디렉토리로 이동후 deploy 디렉토리 생성
+  - mv before-deploy/before-deploy.zip deploy/appeal-api-webservice.zip # deploy로 zip파일 이동
 
 deploy:
   - provider: s3
