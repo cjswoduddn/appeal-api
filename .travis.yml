@@ -74,6 +74,8 @@ deploy:
     deployment_group: appeal-api
     region: ap-northeast-2
     wait-until-deployed: true
+    on:
+      branch: main
 
 notifications:
   email:
