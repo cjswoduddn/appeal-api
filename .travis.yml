@@ -15,7 +15,7 @@ cache:
 before_install:
   - chmod +x gradlew
   - mkdir ./src/main/resources
-  - echo -e spring:\\n\\tdatasource:\\n\\t\\turl: $RDS_URL\\n\\t\\tusername: $RDS_USERNAME\\n\\t\\tpassword: $RDS_PASSWORD\\n\\t\\tdriver-class-name: com.mysql.cj.jdbc.Driver\\n\\tmail:\\n\\t\\thost: smtp.gmail.com\\n\\t\\tport: 587\\n\\t\\tproperties:\\n\\t\\t\\tmail:\\n\\t\\t\\t\\tsmtp:\\n\\t\\t\\t\\t\\tauth: true\\n\\t\\t\\t\\t\\tstarttls:\\n\\t\\t\\t\\t\\t\\tenable: true\\n\\t\\tpassword: $GMAIL_PASSWORD\\n\\t\\tusername: $GMAIL_USERNAME\\ncloud:\\n\\taws:\\n\\t\\tcredentials:\\n\\t\\t\\taccessKey: $S3_ACCESS_KEY\\n\\t\\t\\tsecretKey: $S3_SECRET_KEY\\n\\t\\ts3:\\n\\t\\t\\tbucket: cjswoduddn-test/cjswoduddn\\n\\t\\tregion:\\n\\t\\t\\tstatic: ap-northeast-2\\n\\t\\tstack:\\n\\t\\t\\tauto: false > ./src/main/resources/application.yml
+  - echo -e "spring:\\n\\tdatasource:\\n\\t\\turl: $RDS_URL\\n\\t\\tusername: $RDS_USERNAME\\n\\t\\tpassword: $RDS_PASSWORD\\n\\t\\tdriver-class-name: com.mysql.cj.jdbc.Driver\\n\\tmail:\\n\\t\\thost: smtp.gmail.com\\n\\t\\tport: 587\\n\\t\\tproperties:\\n\\t\\t\\tmail:\\n\\t\\t\\t\\tsmtp:\\n\\t\\t\\t\\t\\tauth: true\\n\\t\\t\\t\\t\\tstarttls:\\n\\t\\t\\t\\t\\t\\tenable: true\\n\\t\\tpassword: $GMAIL_PASSWORD\\n\\t\\tusername: $GMAIL_USERNAME\\ncloud:\\n\\taws:\\n\\t\\tcredentials:\\n\\t\\t\\taccessKey: $S3_ACCESS_KEY\\n\\t\\t\\tsecretKey: $S3_SECRET_KEY\\n\\t\\ts3:\\n\\t\\t\\tbucket: cjswoduddn-test/cjswoduddn\\n\\t\\tregion:\\n\\t\\t\\tstatic: ap-northeast-2\\n\\t\\tstack:\\n\\t\\t\\tauto: false" > ./src/main/resources/application.yml
 
 script: "./gradlew clean build"
 
