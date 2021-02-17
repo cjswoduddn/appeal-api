@@ -49,7 +49,7 @@ script: "./gradlew clean build"
 before_deploy:
   - zip -r appeal-api-webservice *
   - mkdir -p deploy
-  - mv appeal-api-webservice.zip deploy
+  - mv appeal-api-webservice.zip deploy/appeal-api-webservice.zip
 
 deploy:
   - provider: s3
@@ -70,7 +70,7 @@ deploy:
     bucket: appeal-api-from-travis-build
     key: appeal-api-webservice.zip
     bundle-type: zip
-    application: appeal-api-codedeploy
+    application: code-deploy
     deployment-group: appeal-api
     region: ap-northeast-2
     wait-until-deploy: true
