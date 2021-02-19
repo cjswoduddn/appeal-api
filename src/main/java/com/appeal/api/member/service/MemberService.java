@@ -1,9 +1,12 @@
-package com.appeal.api.member;
+package com.appeal.api.member.service;
 
+import com.appeal.api.common.dto.SignUpDto;
 import com.appeal.api.common.exception.DuplicateEmailException;
 import com.appeal.api.common.exception.IllegalEmailValidAccessExcetion;
 import com.appeal.api.common.exception.NoUserFoundException;
 import com.appeal.api.common.util.MailService;
+import com.appeal.api.member.domain.Member;
+import com.appeal.api.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,12 +1,11 @@
-package com.appeal.api.member;
+package com.appeal.api.common.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-@Getter @Setter
+@Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor
 public class SignUpDto {
 
     @Email(message = "올바르지 않은 이메일 형식입니다") @NotBlank(message = "이메일을 입력하세요")

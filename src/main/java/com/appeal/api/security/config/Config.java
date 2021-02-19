@@ -1,6 +1,6 @@
 package com.appeal.api.security.config;
 
-import com.appeal.api.member.MemberRepository;
+import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.api.security.handler.CustomAuthenticationFailureHandler;
 import com.appeal.api.security.handler.CustomAuthenticationSuccessHandler;
 import com.appeal.api.security.provider.CustomAuthenticationProvider;

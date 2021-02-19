@@ -1,14 +1,13 @@
-package com.appeal.api.portfolio;
+package com.appeal.api.portfolio.domain;
 
+import com.appeal.api.portfolio.domain.Portfolio;
 import lombok.Getter;
-import org.apache.commons.lang3.reflect.FieldUtils;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import java.util.Map;
 
 @Entity @DiscriminatorValue("YOUNG_WOO_TEMPLATE_ONE") @Getter
-public class YoungWooTemplateOne extends Portfolio{
+public class YoungWooTemplateOne extends Portfolio {
 
     //about me
     private String name;
@@ -37,6 +36,4 @@ public class YoungWooTemplateOne extends Portfolio{
     private String careerItem2Position;
     private String careerItem2Stack;
     private String careerItem2Intro;
-
-
 }

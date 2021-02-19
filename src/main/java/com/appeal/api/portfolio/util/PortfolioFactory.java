@@ -1,4 +1,7 @@
-package com.appeal.api.portfolio;
+package com.appeal.api.portfolio.util;
+
+import com.appeal.api.portfolio.domain.Portfolio;
+import com.appeal.api.portfolio.domain.YoungWooTemplateOne;
 
 public class PortfolioFactory {
 

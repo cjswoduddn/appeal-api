@@ -1,7 +1,9 @@
-package com.appeal.api.portfolio;
+package com.appeal.api.portfolio.controller;
 
 import com.appeal.api.common.exception.FailImageUploadException;
 import com.appeal.api.common.util.AwsS3Service;
+import com.appeal.api.portfolio.service.PortfolioService;
+import com.appeal.api.portfolio.domain.Portfolio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

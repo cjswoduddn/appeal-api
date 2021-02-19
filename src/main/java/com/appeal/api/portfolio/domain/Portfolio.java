@@ -1,7 +1,8 @@
-package com.appeal.api.portfolio;
+package com.appeal.api.portfolio.domain;
 
 import com.appeal.api.common.BaseTimeInfo;
-import com.appeal.api.member.Member;
+import com.appeal.api.member.domain.Member;
+import com.appeal.api.portfolio.util.PortfolioFactory;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

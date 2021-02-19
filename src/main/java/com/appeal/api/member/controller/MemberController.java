@@ -1,5 +1,7 @@
-package com.appeal.api.member;
+package com.appeal.api.member.controller;
 
+import com.appeal.api.common.dto.SignUpDto;
+import com.appeal.api.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,10 +27,5 @@ public class MemberController {
         return ResponseEntity
                 .ok()
                 .body("인증 성공! 로그인하세용");
-    }
-
-    @GetMapping("/test")
-    public ResponseEntity test(){
-        return ResponseEntity.ok("HELLO");
     }
 }

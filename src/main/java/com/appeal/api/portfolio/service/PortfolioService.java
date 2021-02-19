@@ -1,7 +1,9 @@
-package com.appeal.api.portfolio;
+package com.appeal.api.portfolio.service;
 
 import com.appeal.api.common.exception.NoPortfolioFoundException;
-import com.appeal.api.member.Member;
+import com.appeal.api.member.domain.Member;
+import com.appeal.api.portfolio.domain.Portfolio;
+import com.appeal.api.portfolio.repository.PortfolioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

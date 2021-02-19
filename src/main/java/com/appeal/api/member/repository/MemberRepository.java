@@ -1,5 +1,6 @@
-package com.appeal.api.member;
+package com.appeal.api.member.repository;
 
+import com.appeal.api.member.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

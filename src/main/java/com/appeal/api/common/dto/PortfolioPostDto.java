@@ -1,4 +1,4 @@
-package com.appeal.api.portfolio;
+package com.appeal.api.common.dto;
 
 import com.appeal.api.common.exception.FailImageUploadException;
 import org.springframework.web.multipart.MultipartFile;
