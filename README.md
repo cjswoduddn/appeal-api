@@ -6,6 +6,10 @@
 ![architecture](./images/architecturev1.PNG)
 
 
+## 배포 방식
+![deploy](./images/deployv1.PNG)
+
+
 ## 도움받은 기술
 ![helper](./images/helperv2.PNG)
 
@@ -24,6 +28,12 @@
 - java 11
 - spring boot 2.4.2
 
+
+## 프로젝트 버전
+1.0
+- OCP를 지킨 PORTFOLIO 설계
+- 회원 CRUD, application수준 세션 인증
+- 다중 이미지 처리
 
 ## todo 리스트
 
