@@ -1,14 +1,16 @@
-package com.appeal.api.portfolio;
+package com.appeal.api.common.dto.portfolio;
 
 import lombok.Getter;
-import org.apache.commons.lang3.reflect.FieldUtils;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import java.util.Map;
-
-@Entity @DiscriminatorValue("YOUNG_WOO_TEMPLATE_ONE") @Getter
-public class YoungWooTemplateOne extends Portfolio{
+@Getter @Setter  @NoArgsConstructor
+public class YoungWooTemplateOneFileDto {
+    //portfolio
+    private MultipartFile thumbnail;
+    private String title;
+    private String skill;
 
     //about me
     private String name;
@@ -18,12 +20,12 @@ public class YoungWooTemplateOne extends Portfolio{
     private String projectItem1Name;
     private String projectItem1Role;
     private String projectItem1Intro;
-    private String projectItem1Thumbnail;
+    private MultipartFile projectItem1Thumbnail;
 
     private String projectItem2Name;
     private String projectItem2Role;
     private String projectItem2Intro;
-    private String projectItem2Thumbnail;
+    private MultipartFile projectItem2Thumbnail;
 
     //career
     private String careerItem1Title;
@@ -37,6 +39,4 @@ public class YoungWooTemplateOne extends Portfolio{
     private String careerItem2Position;
     private String careerItem2Stack;
     private String careerItem2Intro;
-
-
 }

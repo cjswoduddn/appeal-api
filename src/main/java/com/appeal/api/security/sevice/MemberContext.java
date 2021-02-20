@@ -1,6 +1,6 @@
 package com.appeal.api.security.sevice;
 
-import com.appeal.api.member.Member;
+import com.appeal.api.member.domain.Member;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 

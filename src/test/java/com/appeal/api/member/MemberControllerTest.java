@@ -1,5 +1,7 @@
 package com.appeal.api.member;
 
+import com.appeal.api.member.controller.MemberController;
+import com.appeal.api.member.service.MemberService;
 import com.appeal.api.security.handler.CustomAuthenticationFailureHandler;
 import com.appeal.api.security.handler.CustomAuthenticationSuccessHandler;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +19,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 excludeAutoConfiguration = SecurityAutoConfiguration.class)
 class MemberControllerTest {
     @Autowired MockMvc mvc;
-    @MockBean MemberService memberService;
+    @MockBean
+    MemberService memberService;
     @MockBean
     AuthenticationProvider authenticationProvider;
     @MockBean

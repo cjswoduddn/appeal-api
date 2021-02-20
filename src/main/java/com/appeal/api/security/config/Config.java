@@ -1,6 +1,6 @@
 package com.appeal.api.security.config;
 
-import com.appeal.api.member.MemberRepository;
+import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.api.security.handler.CustomAuthenticationFailureHandler;
 import com.appeal.api.security.handler.CustomAuthenticationSuccessHandler;
 import com.appeal.api.security.provider.CustomAuthenticationProvider;
@@ -47,7 +47,7 @@ public class Config {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.addAllowedOrigin("/**");
+        configuration.addAllowedOrigin("http://localhost:3000");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.setAllowCredentials(true);

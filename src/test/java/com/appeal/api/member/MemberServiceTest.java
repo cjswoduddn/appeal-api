@@ -1,17 +1,19 @@
 package com.appeal.api.member;
 
+import com.appeal.api.common.dto.SignUpDto;
 import com.appeal.api.common.exception.DuplicateEmailException;
 import com.appeal.api.common.exception.IllegalEmailValidAccessExcetion;
 import com.appeal.api.common.exception.NoUserFoundException;
 import com.appeal.api.common.util.MailService;
-import org.hibernate.annotations.GeneratorType;
+import com.appeal.api.member.domain.Member;
+import com.appeal.api.member.repository.MemberRepository;
+import com.appeal.api.member.service.MemberService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -44,7 +46,7 @@ class MemberServiceTest {
         SignUpDto dto = new SignUpDto();
         dto.setEmail(duplicateEmail);
         // when
-        when(memberRepository.findByEmail(duplicateEmail)).thenReturn(Optional.ofNullable(new Member()));
+        when(memberRepository.findByEmail(duplicateEmail)).thenReturn(Optional.ofNullable(member));
         // then
         Assertions.assertThrows(DuplicateEmailException.class, ()->memberService.signUp(dto));
     }

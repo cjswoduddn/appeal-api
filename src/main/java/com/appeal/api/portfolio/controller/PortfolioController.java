@@ -1,0 +1,25 @@
+package com.appeal.api.portfolio.controller;
+
+import com.appeal.api.common.util.AwsS3Service;
+import com.appeal.api.portfolio.domain.Portfolio;
+import com.appeal.api.portfolio.service.PortfolioService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@RequiredArgsConstructor
+public abstract class PortfolioController<T> {
+
+    protected final PortfolioService portfolioService;
+    protected final AwsS3Service awsS3Service;
+
+    @PostMapping
+    public ResponseEntity<Long> createPortfolio(T dto){
+        Portfolio portfolio = dtoToPortfolio(dto);
+        return ResponseEntity.ok(
+            portfolioService.savePortfolio(portfolio)
+        );
+    }
+
+    protected abstract Portfolio dtoToPortfolio(T dto);
+}
