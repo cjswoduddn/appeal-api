@@ -8,12 +8,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * todo : extends BaseTimeInfo
  */
 @Entity @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member extends BaseTimeInfo {
+public class Member extends BaseTimeInfo implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "MEMBER_ID")
     private Long id;
