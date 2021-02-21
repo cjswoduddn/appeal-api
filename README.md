@@ -3,7 +3,7 @@
 
 
 ## 프로젝트 아키텍처
-![architecture](./images/architecturev1.PNG)
+![architecture](./images/architecturev2.PNG)
 
 
 ## 배포 방식
@@ -34,6 +34,9 @@
 - OCP를 지킨 PORTFOLIO 설계
 - 회원 CRUD, application수준 세션 인증
 - 다중 이미지 처리
+
+1.1
+- 인증 세션 HttpSession -> Redis로 변경
 
 ## todo 리스트
 
