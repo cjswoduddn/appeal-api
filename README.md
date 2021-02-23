@@ -38,6 +38,11 @@
 1.1
 - 인증 세션 HttpSession -> Redis로 변경
 
+2.0(2021-02-23)
+- 멀티모듈 프로젝트(단일 서버, 3개의 라이브러리 모듈)
+- 메일인증을 위한 redis를 MailService에서 MemberService로 옮김
+
+
 ## todo 리스트
 
 ### 빠른 처리
