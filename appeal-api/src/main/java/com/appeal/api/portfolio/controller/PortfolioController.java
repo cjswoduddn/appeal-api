@@ -6,14 +6,15 @@ import com.appeal.service.AwsS3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/portfolio")
 @RequiredArgsConstructor
 public abstract class PortfolioController<T> {
 
     protected final PortfolioService portfolioService;
     protected final AwsS3Service awsS3Service;
 
-    @PostMapping
     public ResponseEntity<Long> createPortfolio(T dto){
         Portfolio portfolio = dtoToPortfolio(dto);
         return ResponseEntity.ok(
