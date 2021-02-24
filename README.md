@@ -21,7 +21,7 @@
 
 
 ## 테이블 설계
-![er_diagram](./images/er_diagramv1.PNG)
+![er_diagram](./images/er_diagramv2.PNG)
 
 
 ## 개발환경
@@ -41,6 +41,10 @@
 2.0(2021-02-23)
 - 멀티모듈 프로젝트(단일 서버, 3개의 라이브러리 모듈)
 - 메일인증을 위한 redis를 MailService에서 MemberService로 옮김
+
+2.1(2021-02-24)
+- 템플릿 이름 양식 변경(임의로 지정한 이름->TemplateTwo)
+- TemplateTwo 동적으로 필드 추가 가능한 버전으로 변경
 
 
 ## todo 리스트

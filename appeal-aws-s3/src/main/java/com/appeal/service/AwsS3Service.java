@@ -7,6 +7,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.appeal.exception.FailImageUploadException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -41,12 +42,16 @@ public class AwsS3Service {
                 .build();
     }
 
-    public String upload(MultipartFile file) throws IOException {
+    public String upload(MultipartFile file){
         String fileName = file.getOriginalFilename();
         // 이름이 같으면 오버라이딩 되는 것 같다. 이름 저장할 때 생각해서 넣어줘야할 듯
 
-        s3Client.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), null)
-                .withCannedAcl(CannedAccessControlList.PublicRead));
+        try {
+            s3Client.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), null)
+                    .withCannedAcl(CannedAccessControlList.PublicRead));
+        }catch (IOException e){
+            throw new FailImageUploadException("이미지업로드에 실패했습니다!");
+        }
         return s3Client.getUrl(bucket, fileName).toString();
     }
 }

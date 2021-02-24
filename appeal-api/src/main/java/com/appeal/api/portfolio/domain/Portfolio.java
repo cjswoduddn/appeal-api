@@ -1,7 +1,7 @@
 package com.appeal.api.portfolio.domain;
 
 import com.appeal.api.common.BaseTimeInfo;
-import com.appeal.api.common.dto.portfolio.YoungWooTemplateOneStringDto;
+import com.appeal.api.common.dto.portfolio.PortfolioDto;
 import com.appeal.api.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -20,15 +20,20 @@ public class Portfolio extends BaseTimeInfo {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
-    private String thumbnailUrl;
+
+    private String thumbnail;
     private String title;
     private String skill;
+    private String name;
+    private String intro;
 
-
-    protected Portfolio(YoungWooTemplateOneStringDto convertedDto, Member member) {
+    protected Portfolio(PortfolioDto dto, Member member){
         this.member = member;
-        thumbnailUrl = convertedDto.getThumbnailUrl();
-        title = convertedDto.getTitle();
-        skill = convertedDto.getSkill();
+        thumbnail = dto.getThumbnail();
+        title = dto.getTitle();
+        skill = dto.getSkill();
+        name = dto.getName();
+        intro = dto.getIntro();
     }
+
 }
