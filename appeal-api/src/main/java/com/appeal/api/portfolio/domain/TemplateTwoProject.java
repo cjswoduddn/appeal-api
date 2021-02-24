@@ -1,5 +1,6 @@
 package com.appeal.api.portfolio.domain;
 
+import com.appeal.api.common.dto.portfolio.TemplateTwoProjectDto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,14 @@ public class TemplateTwoProject {
     private String intro;
     private String role;
     private String thumbnail;
+
+    public static TemplateTwoProject createTemplateTwoProject(TemplateTwoProjectDto project, TemplateTwo templateTwo) {
+        TemplateTwoProject templateTwoProject = new TemplateTwoProject();
+        templateTwoProject.name = project.getName();
+        templateTwoProject.intro = project.getIntro();
+        templateTwoProject.role = project.getRole();
+        templateTwoProject.thumbnail = project.getThumbnail();
+        templateTwoProject.templateTwo = templateTwo;
+        return templateTwoProject;
+    }
 }

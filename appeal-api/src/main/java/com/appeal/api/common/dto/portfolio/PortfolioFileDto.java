@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
-public class PortFolioFileDto {
+public class PortfolioFileDto {
     private MultipartFile thumbnail;
     private String title;
     private String skill;

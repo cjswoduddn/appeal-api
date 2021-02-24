@@ -58,3 +58,10 @@ project(':appeal-mail') {
         compile project(':appeal-common')
     }
 }
+
+project(':appeal-aws-s3') {
+    dependencies {
+        compile project(':appeal-common')
+    }
+}
+

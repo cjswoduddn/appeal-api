@@ -1,5 +1,8 @@
 package com.appeal.api.portfolio.domain;
 
+import com.appeal.api.common.dto.portfolio.PortfolioDto;
+import com.appeal.api.common.dto.portfolio.TemplateTwoDto;
+import com.appeal.api.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,4 +28,27 @@ public class TemplateTwo extends Portfolio {
 
     @OneToMany(mappedBy = "templateTwo", cascade = CascadeType.ALL)
     private List<TemplateTwoCareer> careers = new ArrayList<>();
+
+    public TemplateTwo(PortfolioDto dto, Member member){
+        super(dto, member);
+    }
+
+    public static Portfolio createTemplateTwo(TemplateTwoDto templateTwoDto, Member member) {
+        TemplateTwo templateTwo = new TemplateTwo(templateTwoDto.getPortfolio(), member);
+        templateTwoDto.getProjects().forEach(
+                project->{
+                    templateTwo.projects.add(
+                            TemplateTwoProject.createTemplateTwoProject(project, templateTwo)
+                    );
+                }
+        );
+        templateTwoDto.getCareers().forEach(
+                career->{
+                    templateTwo.careers.add(
+                           TemplateTwoCareer.createTemplateTwoCareer(career, templateTwo)
+                    );
+                }
+        );
+        return templateTwo;
+    }
 }
