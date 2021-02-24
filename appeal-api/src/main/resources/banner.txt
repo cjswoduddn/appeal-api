@@ -1,0 +1,13 @@
+Project Name : ${spring.application.name}
+
+Spring Boot Version : ${spring-boot.version}
+Project Version : ${application.version}
+
+          _____  _____  ______          _
+     /\   |  __ \|  __ \|  ____|   /\   | |
+    /  \  | |__) | |__) | |__     /  \  | |
+   / /\ \ |  ___/|  ___/|  __|   / /\ \ | |
+  / ____ \| |    | |    | |____ / ____ \| |____
+ /_/    \_\_|    |_|    |______/_/    \_\______|
+
+
