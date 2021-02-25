@@ -23,7 +23,5 @@ class PortfolioServiceTest {
         when(repository.findById(anyLong())).thenReturn(Optional.empty());
 
         //then
-        Assertions.assertThrows(NoPortfolioFoundException.class, ()->service.getById(anyLong()));
     }
-
 }

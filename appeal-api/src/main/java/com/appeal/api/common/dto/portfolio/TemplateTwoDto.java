@@ -3,12 +3,11 @@ package com.appeal.api.common.dto.portfolio;
 import com.appeal.service.AwsS3Service;
 import lombok.Getter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class TemplateTwoDto {
+public class TemplateTwoDto implements Dto{
     private PortfolioDto portfolio;
     private List<TemplateTwoProjectDto> projects = new ArrayList<>();
     private List<TemplateTwoCareerDto> careers = new ArrayList<>();

@@ -15,12 +15,12 @@ public abstract class PortfolioController<T> {
     protected final AwsS3Service awsS3Service;
 
     public ResponseEntity<Long> createPortfolio(T dto){
-        Portfolio portfolio = dtoToPortfolio(dto);
+        Portfolio portfolio = convertDtoToDomain(dto);
         return ResponseEntity.ok(
             portfolioService.savePortfolio(portfolio)
         );
     }
 
-    protected abstract Portfolio dtoToPortfolio(T dto);
+    protected abstract Portfolio convertDtoToDomain(T dto);
 
 }

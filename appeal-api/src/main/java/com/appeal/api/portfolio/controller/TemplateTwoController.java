@@ -31,7 +31,7 @@ public class TemplateTwoController extends PortfolioController<TemplateTwoFileDt
      *  변환된 파일을 포트폴리오 형으로 변환
      */
     @Override
-    protected Portfolio dtoToPortfolio(TemplateTwoFileDto dto) {
+    protected Portfolio convertDtoToDomain(TemplateTwoFileDto dto) {
         TemplateTwoDto templateTwoDto = TemplateTwoDto.convertFileDtoToStringUrl(dto, awsS3Service);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return TemplateTwo.createTemplateTwo(templateTwoDto, (Member)authentication.getPrincipal());
