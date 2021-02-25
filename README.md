@@ -46,23 +46,17 @@
 - 템플릿 이름 양식 변경(임의로 지정한 이름->TemplateTwo)
 - TemplateTwo 동적으로 필드 추가 가능한 버전으로 변경
 
+2.2(2021-02-25)
+- MemberController ControllerAdvice연계 테스트 작성
+- PortfolioDto 관련 생성 테스트 작성
+
 
 ## todo 리스트
 
-### 빠른 처리
-- 포트폴리오 템플릿 최대 5개까지 추가하기
-- portfolio service계층 단위테스트하기
-- @WebMvcTest 모든 컨트롤러에 적용해서 테스트하기
-
-### 학습 필요
-- 인증세션 어플리케이션에서 redis로 분리하기(in-memory, new server)
-- MSA 구성을 위한 도메인 별 모듈화 구상하기
-- CI/CD를 위해 travisCI 적용하기
-- 배포를 위해 AWS EC2 확보하기
+- Portfolio 웹계층 테스트 마무리
+- ID로 Portfolio 검색을 위해 JPA 복습하기
+- DDD 관련 서적 읽고 도메인 별로 MSA구성하기
 
 
-### 읽어야할 책 목록
-- 토비의 스프링 v2
-- realMySql
-- 그외 ddd 및 tdd 책 한 권 씩은 읽자
+
 

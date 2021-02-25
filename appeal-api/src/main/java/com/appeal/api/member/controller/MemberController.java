@@ -3,6 +3,7 @@ package com.appeal.api.member.controller;
 import com.appeal.api.common.dto.SignUpDto;
 import com.appeal.api.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -17,8 +18,8 @@ public class MemberController {
     public ResponseEntity signUp(@Valid @RequestBody SignUpDto dto){
         memberService.signUp(dto);
         return ResponseEntity
-                .ok()
-                .body("인증 후 로그인이 가능합니다");
+                .status(HttpStatus.CREATED)
+                .body("you can signin after email validation");
     }
 
     @GetMapping("/signup/{code}")
