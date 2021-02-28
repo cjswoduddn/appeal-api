@@ -14,7 +14,7 @@ public class TemplateTwoProject {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PORTFOLIO_ID")
     private TemplateTwo templateTwo;
 

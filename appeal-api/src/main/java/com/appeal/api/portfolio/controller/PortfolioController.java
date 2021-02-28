@@ -5,6 +5,8 @@ import com.appeal.api.portfolio.service.PortfolioService;
 import com.appeal.service.AwsS3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/portfolio")
@@ -23,4 +25,9 @@ public abstract class PortfolioController<T> {
 
     protected abstract Portfolio convertDtoToDomain(T dto);
 
+    @PostMapping("/{id}")
+    public void test(@PathVariable("id") Long id){
+        Portfolio portfolio = portfolioService.findById(id);
+        return;
+    }
 }

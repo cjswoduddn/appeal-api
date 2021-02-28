@@ -35,5 +35,4 @@ public class Portfolio extends BaseTimeInfo {
         name = dto.getName();
         intro = dto.getIntro();
     }
-
 }
