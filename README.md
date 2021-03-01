@@ -21,7 +21,7 @@
 
 
 ## 테이블 설계
-![er_diagram](./images/er_diagramv2.PNG)
+![er_diagram](./images/er_diagramv3.PNG)
 
 
 ## 개발환경
@@ -49,6 +49,10 @@
 2.2(2021-02-25)
 - MemberController ControllerAdvice연계 테스트 작성
 - PortfolioDto 관련 생성 테스트 작성
+
+3.0(2021-03-01)
+- Portfolio - Template 설계 분리
+- Template dto, service, reposritoy, controller 테스트 완료
 
 
 ## todo 리스트

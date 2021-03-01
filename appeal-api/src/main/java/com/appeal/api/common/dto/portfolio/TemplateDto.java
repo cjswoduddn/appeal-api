@@ -1,4 +1,4 @@
 package com.appeal.api.common.dto.portfolio;
 
-public interface Dto {
+public interface TemplateDto {
 }

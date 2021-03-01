@@ -1,12 +1,9 @@
 package com.appeal.api.common.dto.portfolio;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@Data @Builder @AllArgsConstructor @NoArgsConstructor
+@Getter @Setter
 public class PortfolioFileDto {
     private MultipartFile thumbnail;
     private String title;

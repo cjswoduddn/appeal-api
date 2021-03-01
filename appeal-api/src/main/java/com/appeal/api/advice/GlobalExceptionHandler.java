@@ -4,6 +4,7 @@ import com.appeal.api.advice.dto.ErrorResponse;
 import com.appeal.exception.DuplicateEmailException;
 import com.appeal.exception.FailImageUploadException;
 import com.appeal.exception.NoSupportDtoException;
+import com.appeal.exception.UnexpectedMethodArgumentNullPointerException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +44,16 @@ public class GlobalExceptionHandler {
         ErrorResponse body = new ErrorResponse(exception.getMessage());
         log.info("더이상 지원하지 않는 dto입니다");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(body)
+                ;
+    }
+
+    @ExceptionHandler(UnexpectedMethodArgumentNullPointerException.class)
+    public ResponseEntity<ErrorResponse> UnexpectedMethodArgumentNullPointerException(UnexpectedMethodArgumentNullPointerException exception){
+        ErrorResponse body = new ErrorResponse(exception.getMessage());
+        log.info("나올 수 없는 널포인터 익셉션: {}", exception.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
                 .body(body)
                 ;
     }

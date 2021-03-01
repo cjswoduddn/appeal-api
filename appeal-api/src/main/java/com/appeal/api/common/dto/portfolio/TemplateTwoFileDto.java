@@ -1,15 +1,16 @@
 package com.appeal.api.common.dto.portfolio;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
-@Data @NoArgsConstructor @AllArgsConstructor
-public class TemplateTwoFileDto {
+@Getter @Setter
+public class TemplateTwoFileDto implements TemplateDto{
 
+    @NotNull(message = "이 값이 공백일 순 없습니다")
     private PortfolioFileDto portfolio;
-    private List<TemplateTwoProjectFileDto> projects;
-    private List<TemplateTwoCareerDto> careers;
+    private List<TemplateTwoProjectFileDto> projects = new ArrayList<>();
+    private List<TemplateTwoCareerDto> careers = new ArrayList<>();
 }
