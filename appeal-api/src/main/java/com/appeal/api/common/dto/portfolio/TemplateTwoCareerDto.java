@@ -1,9 +1,8 @@
 package com.appeal.api.common.dto.portfolio;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data @Builder
+@Getter @Setter
 public class TemplateTwoCareerDto {
     private String title;
     private String date;

@@ -1,12 +1,11 @@
 package com.appeal.api.portfolio.domain;
 
 import com.appeal.api.common.dto.portfolio.TemplateTwoProjectDto;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Builder @AllArgsConstructor
 @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class TemplateTwoProject {
@@ -24,12 +23,15 @@ public class TemplateTwoProject {
     private String thumbnail;
 
     public static TemplateTwoProject createTemplateTwoProject(TemplateTwoProjectDto project, TemplateTwo templateTwo) {
-        TemplateTwoProject templateTwoProject = new TemplateTwoProject();
-        templateTwoProject.name = project.getName();
-        templateTwoProject.intro = project.getIntro();
-        templateTwoProject.role = project.getRole();
-        templateTwoProject.thumbnail = project.getThumbnail();
-        templateTwoProject.templateTwo = templateTwo;
-        return templateTwoProject;
+        return
+                TemplateTwoProject
+                .builder()
+                .intro(project.getIntro())
+                .name(project.getName())
+                .role(project.getRole())
+                .thumbnail(project.getThumbnail())
+                .templateTwo(templateTwo)
+                .build()
+                ;
     }
 }

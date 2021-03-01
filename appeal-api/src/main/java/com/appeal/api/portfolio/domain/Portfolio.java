@@ -3,15 +3,13 @@ package com.appeal.api.portfolio.domain;
 import com.appeal.api.common.BaseTimeInfo;
 import com.appeal.api.common.dto.portfolio.PortfolioDto;
 import com.appeal.api.member.domain.Member;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.*;
 
+@Builder @AllArgsConstructor
 @Entity @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn
 public class Portfolio extends BaseTimeInfo {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "PORTFOLIO_ID")
@@ -26,14 +24,19 @@ public class Portfolio extends BaseTimeInfo {
     private String skill;
     private String name;
     private String intro;
+    private String templateType;
 
-    protected Portfolio(PortfolioDto dto, Member member){
-        this.member = member;
-        thumbnail = dto.getThumbnail();
-        title = dto.getTitle();
-        skill = dto.getSkill();
-        name = dto.getName();
-        intro = dto.getIntro();
+    public static Portfolio createPortfolio(PortfolioDto portfolio, String templateType) {
+        return
+                Portfolio.builder()
+                .member((Member) SecurityContextHolder.getContext().getAuthentication().getPrincipal())
+                .intro(portfolio.getIntro())
+                .name(portfolio.getName())
+                .skill(portfolio.getSkill())
+                .templateType(templateType)
+                .thumbnail(portfolio.getThumbnail())
+                .title(portfolio.getTitle())
+                .build()
+                ;
     }
-
 }

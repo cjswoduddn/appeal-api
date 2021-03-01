@@ -1,92 +1,52 @@
 package com.appeal.api.common.dto.portfolio;
 
+import com.appeal.exception.UnexpectedMethodArgumentNullPointerException;
 import com.appeal.service.AwsS3Service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.web.multipart.MultipartFile;
-
-
-import java.util.ArrayList;
-import java.util.List;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class TemplateTwoDtoTest {
 
-    TemplateTwoFileDto templateTwoFileDto;
+    /**
+     * TemplateTwoFileDto 완성본 만들기
+     * s3servcie 모킹
+     * 각 상황 별로 예외가 안 터지는지 확인하는 정도로 끝내자
+     */
 
-    AwsS3Service awsS3Service;
-    PortfolioFileDto portfolioFileDto;
-    TemplateTwoProjectFileDto templateTwoProjectFileDto;
-    TemplateTwoCareerDto templateTwoCareerDto;
-    MultipartFile file;
-    String targetString = "targetString";
+    AwsS3Service service;
+    TemplateTwoFileDto templateTwoFileDto;
 
     @BeforeEach
     void before(){
-        file = new MockMultipartFile("hello.text", "fj".getBytes());
-        awsS3Service = mock(AwsS3Service.class);
-        portfolioFileDto = PortfolioFileDto.builder()
-                .intro("intro")
-                .name("name")
-                .skill("skill")
-                .thumbnail(file)
-                .title("title")
-                .build();
-        templateTwoProjectFileDto = TemplateTwoProjectFileDto.builder()
-                .intro("intro")
-                .name("name")
-                .role("role")
-                .thumbnail(file)
-                .build();
-        templateTwoCareerDto = TemplateTwoCareerDto.builder()
-                .date("date")
-                .intro("intro")
-                .position("position")
-                .stack("stack")
-                .title("title")
-                .build();
-        List<TemplateTwoProjectFileDto> projects = new ArrayList<>();
-        projects.add(templateTwoProjectFileDto);
-        List<TemplateTwoCareerDto> careers = new ArrayList<>();
-        careers.add(templateTwoCareerDto);
+        service = mock(AwsS3Service.class);
         templateTwoFileDto = new TemplateTwoFileDto();
-        templateTwoFileDto.setPortfolio(portfolioFileDto);
-        templateTwoFileDto.setProjects(projects);
-        templateTwoFileDto.setCareers(careers);
+        templateTwoFileDto.setPortfolio(new PortfolioFileDto());
     }
 
     @Test
-    @DisplayName("하자가 없을 때 TemplateTwoDto가 잘 만들어지는가?")
-    public void success() throws Exception{
+    @DisplayName("성공테스트")
+    public void checkStaticCreate() throws Exception{
         //given
+        when(service.upload(any())).thenReturn("url");
         //when
-        when(awsS3Service.upload(file)).thenReturn(targetString);
-        TemplateTwoDto templateTwoDto = TemplateTwoDto.convertFileDtoToStringUrl(templateTwoFileDto, awsS3Service);
-
+        TemplateTwoDto templateTwoDto = TemplateTwoDto.convertFileDtoToStringUrl(templateTwoFileDto, service);
         //then
-        checkPortfolioDto(templateTwoDto.getPortfolio(), portfolioFileDto);
+        assertNotNull(templateTwoDto);
     }
-
-    private void checkPortfolioDto(PortfolioDto portfolioDto, PortfolioFileDto portfolioFileDto) {
-        assertEquals(portfolioDto.getIntro(), portfolioFileDto.getIntro());
-        assertEquals(portfolioDto.getName(), portfolioFileDto.getName());
-        assertEquals(portfolioDto.getSkill(), portfolioFileDto.getSkill());
-        assertEquals(portfolioDto.getTitle(), portfolioFileDto.getTitle());
-        assertEquals(portfolioDto.getThumbnail(), targetString);
-    }
-
     @Test
-    @DisplayName("Portfolio")
-    public void makeTemplateTwoWhenPortfolioFileDtoFileNull() throws Exception{
+    @DisplayName("그럴리는 없지만 포트폴리오가 널이라면?")
+    public void portfolioFileDtoNull() throws Exception{
         //given
-
+        templateTwoFileDto.setPortfolio(null);
         //when
-
         //then
+        assertThrows(UnexpectedMethodArgumentNullPointerException.class,
+                () -> TemplateTwoDto.convertFileDtoToStringUrl(templateTwoFileDto, service));
     }
 
 }
