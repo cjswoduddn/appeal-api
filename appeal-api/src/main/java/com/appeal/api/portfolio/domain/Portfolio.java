@@ -1,10 +1,9 @@
 package com.appeal.api.portfolio.domain;
 
 import com.appeal.api.common.BaseTimeInfo;
-import com.appeal.api.common.dto.portfolio.PortfolioDto;
+import com.appeal.api.portfolio.dto.PortfolioDto;
 import com.appeal.api.member.domain.Member;
 import lombok.*;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.*;
 
@@ -26,10 +25,10 @@ public class Portfolio extends BaseTimeInfo {
     private String intro;
     private String templateType;
 
-    public static Portfolio createPortfolio(PortfolioDto portfolio, String templateType) {
+    public static Portfolio createPortfolio(PortfolioDto portfolio, String templateType, Member member) {
         return
                 Portfolio.builder()
-                .member((Member) SecurityContextHolder.getContext().getAuthentication().getPrincipal())
+                .member(member)
                 .intro(portfolio.getIntro())
                 .name(portfolio.getName())
                 .skill(portfolio.getSkill())

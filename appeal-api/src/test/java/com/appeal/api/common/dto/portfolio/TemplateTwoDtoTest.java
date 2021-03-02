@@ -1,11 +1,13 @@
 package com.appeal.api.common.dto.portfolio;
 
+import com.appeal.api.portfolio.dto.PortfolioFileDto;
+import com.appeal.api.portfolio.dto.TemplateTwoDto;
+import com.appeal.api.portfolio.dto.TemplateTwoFileDto;
 import com.appeal.exception.UnexpectedMethodArgumentNullPointerException;
 import com.appeal.service.AwsS3Service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

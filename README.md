@@ -54,6 +54,10 @@
 - Portfolio - Template 설계 분리
 - Template dto, service, reposritoy, controller 테스트 완료
 
+3.1(2021-03-02)
+- TemplateTwo에 대한 read구현(fetch join 적용)
+- Portfolio에 Member를 set할 때 세션 값을 가져오는 역할 변경
+
 
 ## todo 리스트
 

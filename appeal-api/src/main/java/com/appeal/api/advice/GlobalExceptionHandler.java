@@ -1,10 +1,7 @@
 package com.appeal.api.advice;
 
 import com.appeal.api.advice.dto.ErrorResponse;
-import com.appeal.exception.DuplicateEmailException;
-import com.appeal.exception.FailImageUploadException;
-import com.appeal.exception.NoSupportDtoException;
-import com.appeal.exception.UnexpectedMethodArgumentNullPointerException;
+import com.appeal.exception.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,9 +46,18 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(UnexpectedMethodArgumentNullPointerException.class)
-    public ResponseEntity<ErrorResponse> UnexpectedMethodArgumentNullPointerException(UnexpectedMethodArgumentNullPointerException exception){
+    public ResponseEntity<ErrorResponse> unexpectedMethodArgumentNullPointerException(UnexpectedMethodArgumentNullPointerException exception){
         ErrorResponse body = new ErrorResponse(exception.getMessage());
         log.info("나올 수 없는 널포인터 익셉션: {}", exception.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(body)
+                ;
+    }
+
+    @ExceptionHandler(NoPortfolioFoundException.class)
+    public ResponseEntity<ErrorResponse> noPortfolioFoundExceptoin(NoPortfolioFoundException exception){
+        ErrorResponse body = new ErrorResponse((exception.getMessage()));
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(body)
