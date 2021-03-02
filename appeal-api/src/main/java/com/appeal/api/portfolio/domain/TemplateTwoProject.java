@@ -1,6 +1,6 @@
 package com.appeal.api.portfolio.domain;
 
-import com.appeal.api.common.dto.portfolio.TemplateTwoProjectDto;
+import com.appeal.api.portfolio.dto.TemplateTwoProjectDto;
 import lombok.*;
 
 import javax.persistence.*;

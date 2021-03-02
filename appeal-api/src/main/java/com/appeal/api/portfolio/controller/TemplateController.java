@@ -1,10 +1,12 @@
 package com.appeal.api.portfolio.controller;
 
-import com.appeal.api.common.dto.portfolio.TemplateDto;
+import com.appeal.api.portfolio.dto.TemplateDto;
 import com.appeal.api.portfolio.service.TemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -22,6 +24,14 @@ public class TemplateController<D extends TemplateDto, S extends TemplateService
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(templateService.createTemplate(dto))
+                ;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TemplateDto> getTemplateById(@PathVariable("id") Long id){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(templateService.getTemplateById(id))
                 ;
     }
 }

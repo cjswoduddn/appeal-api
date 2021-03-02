@@ -4,6 +4,7 @@ import com.appeal.api.security.filter.CustomUsernamePasswordAuthenticationFilter
 import com.appeal.api.security.handler.CustomAuthenticationFailureHandler;
 import com.appeal.api.security.handler.CustomAuthenticationSuccessHandler;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/signup/**", "/signin").permitAll()
+                .antMatchers(HttpMethod.GET, "/template**/*", "/portfolio/**").permitAll()
                 .antMatchers("/**").hasRole("USER")
                 .anyRequest().authenticated()
         ;

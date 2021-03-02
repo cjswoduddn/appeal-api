@@ -1,8 +1,9 @@
 package com.appeal.api.portfolio.service;
 
-import com.appeal.api.common.dto.portfolio.TemplateDto;
-import org.springframework.stereotype.Service;
+import com.appeal.api.portfolio.dto.TemplateDto;
 
 public interface TemplateService {
     Long createTemplate(TemplateDto dto);
+
+    TemplateDto getTemplateById(Long id);
 }
