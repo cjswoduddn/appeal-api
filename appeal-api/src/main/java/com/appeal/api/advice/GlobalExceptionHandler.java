@@ -2,6 +2,8 @@ package com.appeal.api.advice;
 
 import com.appeal.api.advice.dto.ErrorResponse;
 import com.appeal.exception.*;
+import com.appeal.exception.notfound.NotFoundException;
+import com.appeal.exception.notfound.NotFoundPortfolioException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,8 +57,8 @@ public class GlobalExceptionHandler {
                 ;
     }
 
-    @ExceptionHandler(NoPortfolioFoundException.class)
-    public ResponseEntity<ErrorResponse> noPortfolioFoundExceptoin(NoPortfolioFoundException exception){
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ErrorResponse> NotFoundException(NotFoundException exception){
         ErrorResponse body = new ErrorResponse((exception.getMessage()));
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)

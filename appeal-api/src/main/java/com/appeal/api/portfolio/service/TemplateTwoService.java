@@ -6,7 +6,7 @@ import com.appeal.api.portfolio.dto.TemplateTwoFileDto;
 import com.appeal.api.member.domain.Member;
 import com.appeal.api.portfolio.domain.TemplateTwo;
 import com.appeal.api.portfolio.repository.TemplateTwoRepository;
-import com.appeal.exception.NoPortfolioFoundException;
+import com.appeal.exception.notfound.NotFoundPortfolioException;
 import com.appeal.service.AwsS3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,7 +37,8 @@ public class TemplateTwoService implements TemplateService{
 
     @Override
     public TemplateDto getTemplateById(Long id) {
-        TemplateTwo templateTwo = templateTwoRepository.findById(id).orElseThrow(NoPortfolioFoundException::new);
+        TemplateTwo templateTwo = templateTwoRepository.findById(id)
+                .orElseThrow(()-> new  NotFoundPortfolioException("해당 포트폴리오는 없습니다"));
         return TemplateTwoDto.convertDomainToDto(templateTwo);
     }
 }

@@ -1,6 +1,6 @@
 package com.appeal.api.portfolio.repository;
 
-import com.appeal.api.common.dto.SignUpDto;
+import com.appeal.api.member.dto.SignUpDto;
 import com.appeal.api.portfolio.dto.PortfolioDto;
 import com.appeal.api.portfolio.dto.TemplateTwoCareerDto;
 import com.appeal.api.portfolio.dto.TemplateTwoDto;
