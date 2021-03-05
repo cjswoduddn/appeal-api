@@ -2,7 +2,8 @@ package com.appeal.api.member.domain;
 
 import com.appeal.api.common.Authority;
 import com.appeal.api.common.BaseTimeInfo;
-import com.appeal.api.common.dto.SignUpDto;
+import com.appeal.api.member.dto.SignUpDto;
+import com.appeal.api.member.dto.UpdateMemberDto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,5 +44,10 @@ public class Member extends BaseTimeInfo implements Serializable {
 
     public void successEmailValid() {
         authority = Authority.ROLE_USER;
+    }
+
+    public void updateInfo(UpdateMemberDto dto) {
+        password = dto.getPassword();
+        name = dto.getName();
     }
 }

@@ -1,10 +1,10 @@
 package com.appeal.api.member;
 
 import com.appeal.api.common.Authority;
-import com.appeal.api.common.dto.SignUpDto;
-import com.appeal.exception.NoUserFoundException;
+import com.appeal.api.member.dto.SignUpDto;
 import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.repository.MemberRepository;
+import com.appeal.exception.notfound.NotFoundMemberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,7 +33,8 @@ class MemberRepositoryTest {
         memberRepository.save(member1);
 
         //when
-        Member member = memberRepository.findByEmail(member1.getEmail()).orElseThrow(NoUserFoundException::new);
+        Member member = memberRepository.findByEmail(member1.getEmail())
+                .orElseThrow(()-> new NotFoundMemberException("fjfj"));
 
         //then
         assertNotNull(member.getId());

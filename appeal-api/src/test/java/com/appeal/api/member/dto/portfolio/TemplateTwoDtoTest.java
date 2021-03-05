@@ -1,4 +1,4 @@
-package com.appeal.api.common.dto.portfolio;
+package com.appeal.api.member.dto.portfolio;
 
 import com.appeal.api.portfolio.dto.PortfolioFileDto;
 import com.appeal.api.portfolio.dto.TemplateTwoDto;

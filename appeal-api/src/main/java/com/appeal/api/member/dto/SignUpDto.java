@@ -1,4 +1,4 @@
-package com.appeal.api.common.dto;
+package com.appeal.api.member.dto;
 
 import lombok.*;
 
