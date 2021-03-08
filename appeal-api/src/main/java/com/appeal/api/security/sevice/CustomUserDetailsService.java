@@ -1,6 +1,7 @@
 package com.appeal.api.security.sevice;
 
 import com.appeal.api.member.domain.Member;
+import com.appeal.api.member.dto.MemberSession;
 import com.appeal.api.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,7 +29,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> roles = new ArrayList<>();
 
         roles.add(new SimpleGrantedAuthority(member.getAuthority().name()));
-        MemberContext memberContext = new MemberContext(member, roles);
+        MemberContext memberContext = new MemberContext(MemberSession.createMemberSession(member), roles);
 
         return memberContext;
     }

@@ -27,7 +27,7 @@ public class MailService {
             helper.setTo(email);
             helper.setSubject("인증하세용");
             helper.setText(
-                    "<a href=\""+targetUrl+"/signup/"+code+"\">Cilck Me</a>"
+                    "<a href=\""+targetUrl+"/member/"+code+"\">Cilck Me</a>"
                     , true);
             mailSender.send(message);
             return code;
