@@ -15,7 +15,7 @@ import java.io.Serializable;
  * todo : extends BaseTimeInfo
  */
 @Entity @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member extends BaseTimeInfo implements Serializable {
+public class Member extends BaseTimeInfo {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "MEMBER_ID")
     private Long id;

@@ -1,6 +1,5 @@
 package com.appeal.api.security.handler;
 
-import com.appeal.api.member.domain.Member;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 

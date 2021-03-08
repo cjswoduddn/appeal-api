@@ -9,6 +9,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -28,7 +29,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         if(!passwordEncoder.matches((String)credentials, memberContext.getPassword()))
             throw new BadCredentialsException("password not matching!");
 
-        if(memberContext.getMember().getAuthority().equals(Authority.ROLE_PRE))
+        SimpleGrantedAuthority rolePre = new SimpleGrantedAuthority(Authority.ROLE_PRE.name());
+        if(memberContext.getAuthorities().contains(rolePre))
             throw new NoValidAccountException("미인증 계정입니다");
 
 
