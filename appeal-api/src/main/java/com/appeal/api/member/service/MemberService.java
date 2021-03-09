@@ -1,5 +1,6 @@
 package com.appeal.api.member.service;
 
+import com.appeal.api.member.dto.MemberSession;
 import com.appeal.api.member.dto.SignUpDto;
 import com.appeal.api.member.dto.UpdateMemberDto;
 import com.appeal.exception.DuplicateEmailException;
@@ -53,9 +54,9 @@ public class MemberService {
                 .successEmailValid();
     }
 
-    public void updateMemberInfo(Long id, UpdateMemberDto dto) {
+    public void updateMemberInfo(MemberSession memberSession, UpdateMemberDto dto) {
         Member member = memberRepository
-                .findById(id)
+                .findById(memberSession.getId())
                 .orElseThrow(() -> {
                     throw new NotFoundMemberException("등록되지 않은 멤버입니다!");
                 });

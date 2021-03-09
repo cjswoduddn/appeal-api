@@ -36,7 +36,10 @@ public class MemberController {
 
     @PatchMapping
     public ResponseEntity updateMemberInfo(@AuthenticatedMember MemberSession memberSession, UpdateMemberDto dto){
-        return null;
+        memberService.updateMemberInfo(memberSession, dto);
+        return ResponseEntity
+                .ok()
+                .body("변경 완료!");
     }
 
 }

@@ -1,5 +1,7 @@
 package com.appeal.api.portfolio.controller;
 
+import com.appeal.api.member.dto.AuthenticatedMember;
+import com.appeal.api.member.dto.MemberSession;
 import com.appeal.api.portfolio.dto.TemplateDto;
 import com.appeal.api.portfolio.service.TemplateService;
 import lombok.RequiredArgsConstructor;
@@ -20,10 +22,10 @@ public class TemplateController<D extends TemplateDto, S extends TemplateService
      *  dto변환 시 setter는 필수 중의 필수
      */
     @PostMapping
-    public ResponseEntity<Long> createTemplate(@Valid  D dto){
+    public ResponseEntity<Long> createTemplate(@AuthenticatedMember MemberSession session, @Valid  D dto){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(templateService.createTemplate(dto))
+                .body(templateService.createTemplate(session, dto))
                 ;
     }
 
