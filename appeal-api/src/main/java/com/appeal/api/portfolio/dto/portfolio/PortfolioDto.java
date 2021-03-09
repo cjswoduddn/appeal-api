@@ -1,4 +1,4 @@
-package com.appeal.api.portfolio.dto;
+package com.appeal.api.portfolio.dto.portfolio;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

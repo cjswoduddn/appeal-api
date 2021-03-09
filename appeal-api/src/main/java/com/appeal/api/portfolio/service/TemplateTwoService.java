@@ -2,11 +2,11 @@ package com.appeal.api.portfolio.service;
 
 import com.appeal.api.member.dto.MemberSession;
 import com.appeal.api.member.repository.MemberRepository;
-import com.appeal.api.portfolio.dto.TemplateDto;
-import com.appeal.api.portfolio.dto.TemplateTwoDto;
-import com.appeal.api.portfolio.dto.TemplateTwoFileDto;
+import com.appeal.api.portfolio.dto.template.TemplateDto;
+import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoDto;
+import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoFileDto;
 import com.appeal.api.member.domain.Member;
-import com.appeal.api.portfolio.domain.TemplateTwo;
+import com.appeal.api.portfolio.domain.templatetwo.TemplateTwo;
 import com.appeal.api.portfolio.repository.TemplateTwoRepository;
 import com.appeal.exception.notfound.NotFoundMemberException;
 import com.appeal.exception.notfound.NotFoundPortfolioException;

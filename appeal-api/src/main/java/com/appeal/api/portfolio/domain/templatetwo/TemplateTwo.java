@@ -1,6 +1,7 @@
-package com.appeal.api.portfolio.domain;
+package com.appeal.api.portfolio.domain.templatetwo;
 
-import com.appeal.api.portfolio.dto.TemplateTwoDto;
+import com.appeal.api.portfolio.domain.Portfolio;
+import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoDto;
 import com.appeal.api.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Getter;

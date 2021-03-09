@@ -5,12 +5,10 @@ import com.appeal.api.portfolio.service.TemplateTwoService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
-@RequestMapping("/templatetwo")
-public class TemplateTwoController extends TemplateController<TemplateTwoFileDto, TemplateTwoService> {
-
-    public TemplateTwoController(TemplateTwoService templateService) {
+@RequestMapping("/templateone")
+public class TemplateOneController extends TemplateController<TemplateTwoFileDto, TemplateTwoService> {
+    public TemplateOneController(TemplateTwoService templateService) {
         super(templateService);
     }
 }

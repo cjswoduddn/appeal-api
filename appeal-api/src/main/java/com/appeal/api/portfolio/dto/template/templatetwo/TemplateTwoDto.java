@@ -1,9 +1,11 @@
-package com.appeal.api.portfolio.dto;
+package com.appeal.api.portfolio.dto.template.templatetwo;
 
 import com.appeal.api.portfolio.domain.Portfolio;
-import com.appeal.api.portfolio.domain.TemplateTwo;
-import com.appeal.api.portfolio.domain.TemplateTwoCareer;
-import com.appeal.api.portfolio.domain.TemplateTwoProject;
+import com.appeal.api.portfolio.domain.templatetwo.TemplateTwo;
+import com.appeal.api.portfolio.domain.templatetwo.TemplateTwoCareer;
+import com.appeal.api.portfolio.domain.templatetwo.TemplateTwoProject;
+import com.appeal.api.portfolio.dto.portfolio.PortfolioDto;
+import com.appeal.api.portfolio.dto.template.TemplateDto;
 import com.appeal.exception.UnexpectedMethodArgumentNullPointerException;
 import com.appeal.service.AwsS3Service;
 import lombok.AccessLevel;
@@ -16,7 +18,7 @@ import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class TemplateTwoDto implements TemplateDto{
+public class TemplateTwoDto implements TemplateDto {
     private PortfolioDto portfolio;
     private List<TemplateTwoProjectDto> projects = new ArrayList<>();
     private List<TemplateTwoCareerDto> careers = new ArrayList<>();

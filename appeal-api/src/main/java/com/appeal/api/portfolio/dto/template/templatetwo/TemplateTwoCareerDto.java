@@ -1,4 +1,4 @@
-package com.appeal.api.portfolio.dto;
+package com.appeal.api.portfolio.dto.template.templatetwo;
 
 import lombok.*;
 

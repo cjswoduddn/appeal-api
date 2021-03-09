@@ -2,7 +2,7 @@ package com.appeal.api.portfolio.controller;
 
 import com.appeal.api.member.dto.AuthenticatedMember;
 import com.appeal.api.member.dto.MemberSession;
-import com.appeal.api.portfolio.dto.TemplateDto;
+import com.appeal.api.portfolio.dto.template.TemplateDto;
 import com.appeal.api.portfolio.service.TemplateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

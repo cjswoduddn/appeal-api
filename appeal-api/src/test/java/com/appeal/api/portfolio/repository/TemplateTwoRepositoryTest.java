@@ -1,14 +1,14 @@
 package com.appeal.api.portfolio.repository;
 
 import com.appeal.api.member.dto.SignUpDto;
-import com.appeal.api.portfolio.dto.PortfolioDto;
-import com.appeal.api.portfolio.dto.TemplateTwoCareerDto;
-import com.appeal.api.portfolio.dto.TemplateTwoDto;
-import com.appeal.api.portfolio.dto.TemplateTwoProjectDto;
+import com.appeal.api.portfolio.dto.portfolio.PortfolioDto;
+import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoCareerDto;
+import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoDto;
+import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoProjectDto;
 import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.api.portfolio.domain.Portfolio;
-import com.appeal.api.portfolio.domain.TemplateTwo;
+import com.appeal.api.portfolio.domain.templatetwo.TemplateTwo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

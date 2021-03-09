@@ -1,7 +1,7 @@
 package com.appeal.api.portfolio.domain;
 
 import com.appeal.api.common.BaseTimeInfo;
-import com.appeal.api.portfolio.dto.PortfolioDto;
+import com.appeal.api.portfolio.dto.portfolio.PortfolioDto;
 import com.appeal.api.member.domain.Member;
 import lombok.*;
 
