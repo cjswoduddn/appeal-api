@@ -1,4 +1,4 @@
-package com.appeal.api.portfolio.dto;
+package com.appeal.api.portfolio.dto.portfolio;
 
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;

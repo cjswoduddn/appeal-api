@@ -1,7 +1,6 @@
 package com.appeal.api.portfolio.repository;
 
-import com.appeal.api.portfolio.domain.TemplateTwo;
-import org.hibernate.annotations.BatchSize;
+import com.appeal.api.portfolio.domain.templatetwo.TemplateTwo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
