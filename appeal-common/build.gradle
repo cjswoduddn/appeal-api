@@ -1,12 +1,13 @@
-plugins {
-    id 'java'
+bootJar {
+    enabled = false
 }
 
-version 'unspecified'
-
-repositories {
-    mavenCentral()
+jar {
+    enabled = true
 }
+
+group 'com.appeal'
+version '0.0.1-SNAPSHOT'
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'

@@ -56,21 +56,6 @@ class TemplateTwoControllerTest {
                 .andExpect(status().is(403));
     }
     @Test
-    @DisplayName("정상적인 요청을 잘 오케이하는지")
-    @WithMockUser
-    void successRequest() throws Exception{
-        //given
-        when(templateTwoService.createTemplate(any())).thenReturn(1L);
-        //then
-        mvc.perform(
-                multipart(TEMPLATE_URL)
-                .file(portfolioFileDtoThumbnail)
-        )
-                .andExpect(status().isCreated())
-                .andExpect(content().string("1"))
-        ;
-    }
-    @Test
     @DisplayName("project는 적어도 하나의 필드를 가져야 함")
     @WithMockUser
     public void failRequest() throws Exception{

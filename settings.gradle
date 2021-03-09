@@ -1,6 +1,6 @@
 rootProject.name = 'api'
-include 'appeal-aws-s3'
 include 'appeal-api'
+include 'appeal-aws-s3'
 include 'appeal-mail'
 include 'appeal-common'
 
