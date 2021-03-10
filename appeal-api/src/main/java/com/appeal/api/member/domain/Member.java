@@ -2,14 +2,13 @@ package com.appeal.api.member.domain;
 
 import com.appeal.api.common.Authority;
 import com.appeal.api.common.BaseTimeInfo;
-import com.appeal.api.member.dto.SignUpDto;
+import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.dto.UpdateMemberDto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * todo : extends BaseTimeInfo
@@ -33,7 +32,7 @@ public class Member extends BaseTimeInfo {
     /**
      * static create method
      */
-    public static Member createMember(SignUpDto dto){
+    public static Member createMember(MemberDto dto){
         Member member = new Member();
         member.name = dto.getName();
         member.password = dto.getPassword();

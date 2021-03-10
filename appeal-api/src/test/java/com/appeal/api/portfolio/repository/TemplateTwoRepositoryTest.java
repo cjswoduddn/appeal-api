@@ -1,6 +1,6 @@
 package com.appeal.api.portfolio.repository;
 
-import com.appeal.api.member.dto.SignUpDto;
+import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.portfolio.dto.portfolio.PortfolioDto;
 import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoCareerDto;
 import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoDto;
@@ -38,7 +38,7 @@ class TemplateTwoRepositoryTest {
         templateTwoDto.getProjects().add(TemplateTwoProjectDto.builder().build());
         templateTwoDto.getProjects().add(TemplateTwoProjectDto.builder().build());
         templateTwoDto.getCareers().add(TemplateTwoCareerDto.builder().build());
-        Member member = Member.createMember(new SignUpDto());
+        Member member = Member.createMember(new MemberDto());
         memberRepository.save(member);
         templateTwo = TemplateTwo.createTemplateTwo(templateTwoDto, member);
     }

@@ -1,7 +1,7 @@
 package com.appeal.api.member.service;
 
 import com.appeal.api.member.domain.Member;
-import com.appeal.api.member.dto.SignUpDto;
+import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.exception.DuplicateEmailException;
 import com.appeal.exception.IllegalEmailValidAccessExcetion;
@@ -28,7 +28,7 @@ class MemberServiceTest {
     PasswordEncoder passwordEncoder;
     StringRedisTemplate redisTemplate;
 
-    SignUpDto dto;
+    MemberDto dto;
     final String DUPLICATE = "DUPLICATE";
 
 
@@ -39,7 +39,7 @@ class MemberServiceTest {
         passwordEncoder = mock(PasswordEncoder.class);
         redisTemplate = mock(StringRedisTemplate.class);
         memberService = new MemberService(memberRepository, mailService, passwordEncoder, redisTemplate);
-        dto = new SignUpDto();
+        dto = new MemberDto();
     }
 
     @Test

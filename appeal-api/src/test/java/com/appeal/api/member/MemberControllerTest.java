@@ -1,7 +1,7 @@
 package com.appeal.api.member;
 
 import com.appeal.api.advice.GlobalExceptionHandler;
-import com.appeal.api.member.dto.SignUpDto;
+import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.controller.MemberController;
 import com.appeal.api.member.dto.UpdateMemberDto;
 import com.appeal.api.member.service.MemberService;
@@ -37,12 +37,12 @@ class MemberControllerTest {
 
     String requestUrl = "/member";
 
-    SignUpDto signUpDto;
+    MemberDto signUpDto;
     UpdateMemberDto updateMemberDto;
 
     @BeforeEach
     void before(){
-        signUpDto = new SignUpDto("ma8511@naver.com", "1234", "youngwoo");
+        signUpDto = new MemberDto("ma8511@naver.com", "1234", "youngwoo");
         updateMemberDto = new UpdateMemberDto();
         updateMemberDto.setName("hello");
         updateMemberDto.setPassword("world");

@@ -1,7 +1,7 @@
 package com.appeal.api.member.service;
 
 import com.appeal.api.member.dto.MemberSession;
-import com.appeal.api.member.dto.SignUpDto;
+import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.dto.UpdateMemberDto;
 import com.appeal.exception.DuplicateEmailException;
 import com.appeal.exception.IllegalEmailValidAccessExcetion;
@@ -27,7 +27,7 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final StringRedisTemplate redisTemplate;
 
-    public void signUp(SignUpDto dto) {
+    public void signUp(MemberDto dto) {
         validDuplicateEmail(dto);
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         Member member = memberRepository.save(Member.createMember(dto));
@@ -35,7 +35,7 @@ public class MemberService {
         redisTemplate.opsForValue().set(code, Long.toString(member.getId()));
     }
 
-    private void validDuplicateEmail(SignUpDto dto) {
+    private void validDuplicateEmail(MemberDto dto) {
         memberRepository
                 .findByEmail(dto.getEmail())
                 .ifPresent(member -> {

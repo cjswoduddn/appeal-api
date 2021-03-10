@@ -1,6 +1,7 @@
 package com.appeal.api.portfolio.domain.templateone;
 
 
+import com.appeal.api.portfolio.dto.template.templateone.TemplateOneCareerDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,4 +24,14 @@ public class TemplateOneCareer {
     private String title;
     private String position;
     private String name;
+
+    public static TemplateOneCareer createTemplateOneCareer(TemplateOneCareerDto career, TemplateOne templateOne) {
+        TemplateOneCareer templateOneCareer = new TemplateOneCareer();
+        templateOneCareer.date = career.getDate();
+        templateOneCareer.title = career.getTitle();
+        templateOneCareer.position = career.getPosition();
+        templateOneCareer.name = career.getName();
+        templateOneCareer.templateOne = templateOne;
+        return templateOneCareer;
+    }
 }

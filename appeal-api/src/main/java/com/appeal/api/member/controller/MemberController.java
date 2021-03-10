@@ -1,7 +1,7 @@
 package com.appeal.api.member.controller;
 
 import com.appeal.api.member.dto.MemberSession;
-import com.appeal.api.member.dto.SignUpDto;
+import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.dto.UpdateMemberDto;
 import com.appeal.api.member.dto.AuthenticatedMember;
 import com.appeal.api.member.service.MemberService;
@@ -19,7 +19,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping
-    public ResponseEntity signUp(@Valid @RequestBody SignUpDto dto){
+    public ResponseEntity signUp(@Valid @RequestBody MemberDto dto){
         memberService.signUp(dto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -32,6 +32,18 @@ public class MemberController {
         return ResponseEntity
                 .ok()
                 .body("인증 성공! 로그인하세용");
+    }
+
+    @GetMapping
+    public ResponseEntity<MemberDto> getMember(@AuthenticatedMember MemberSession memberSession){
+        MemberDto memberDto = new MemberDto();
+        memberDto.setEmail(memberSession.getEmail());
+        memberDto.setName(memberSession.getName());
+        memberDto.setPassword(memberSession.getPassword());
+        return ResponseEntity
+                .ok()
+                .body(memberDto)
+                ;
     }
 
     @PatchMapping
