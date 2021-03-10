@@ -1,5 +1,6 @@
 package com.appeal.api.portfolio.domain.templateone;
 
+import com.appeal.api.portfolio.dto.template.templateone.TemplateOneCertificateDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,4 +21,13 @@ public class TemplateOneCertificate {
     private String date;
     private String title;
     private String origin;
+
+    public static TemplateOneCertificate createTemplateOneCertificate(TemplateOneCertificateDto certificate, TemplateOne templateOne) {
+        TemplateOneCertificate templateOneCertificate = new TemplateOneCertificate();
+        templateOneCertificate.date = certificate.getDate();
+        templateOneCertificate.title = certificate.getTitle();
+        templateOneCertificate.origin = certificate.getOrigin();
+        templateOneCertificate.templateOne = templateOne;
+        return null;
+    }
 }

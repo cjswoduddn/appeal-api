@@ -1,6 +1,8 @@
 package com.appeal.api.portfolio.domain.templateone;
 
+import com.appeal.api.member.domain.Member;
 import com.appeal.api.portfolio.domain.Portfolio;
+import com.appeal.api.portfolio.dto.template.templateone.TemplateOneDto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -53,5 +55,38 @@ public class TemplateOne {
 
     private static String getTemplateType() {
         return "templateone";
+    }
+
+    public static TemplateOne createTemplateOne(TemplateOneDto templateOneDto, Member member) {
+        TemplateOne templateOne = new TemplateOne();
+        templateOne.portfolio = Portfolio.createPortfolio(templateOneDto.getPortfolio(), getTemplateType(), member);
+        templateOneDto.getCertificates().forEach(certificate->{
+            templateOne.certificates.add(TemplateOneCertificate.createTemplateOneCertificate(certificate, templateOne));
+        });
+        templateOneDto.getCareers().forEach(career->{
+            templateOne.careers.add(TemplateOneCareer.createTemplateOneCareer(career, templateOne));
+        });
+        templateOne.birth = templateOneDto.getBirth();
+        templateOne.englishName = templateOneDto.getEnglishName();
+        templateOne.phone = templateOneDto.getPhone();
+        templateOne.address = templateOneDto.getAddress();
+        templateOne.email = templateOneDto.getEmail();
+        templateOne.highschoolDate = templateOneDto.getHighschoolDate();
+        templateOne.highschoolName = templateOneDto.getHighschoolName();
+        templateOne.highschoolMajor = templateOneDto.getHighschoolMajor();
+        templateOne.highschoolGraduation = templateOneDto.getHighschoolGraduation();
+        templateOne.highschoolScroe = templateOneDto.getHighschoolScroe();
+        templateOne.colleageDate = templateOneDto.getColleageDate();
+        templateOne.colleageName = templateOneDto.getColleageName();
+        templateOne.colleageMajor = templateOneDto.getColleageMajor();
+        templateOne.colleageScore = templateOneDto.getColleageScore();
+        templateOne.colleageGraduation = templateOneDto.getColleageGraduation();
+        templateOne.graduateschoolDate = templateOneDto.getGraduateschoolDate();
+        templateOne.graduateschoolName = templateOneDto.getGraduateschoolName();
+        templateOne.graduateschoolMajor = templateOneDto.getGraduateschoolMajor();
+        templateOne.graduateschoolGraduation = templateOneDto.getGraduateschoolGraduation();
+        templateOne.graduateschoolScore = templateOneDto.getGraduateschoolScore();
+        templateOne.militaryStatus = templateOneDto.getMilitaryStatus();
+        return templateOne;
     }
 }

@@ -2,14 +2,16 @@ package com.appeal.api.portfolio.dto.template.templateone;
 
 import com.appeal.api.portfolio.dto.portfolio.PortfolioFileDto;
 import com.appeal.api.portfolio.dto.template.TemplateDto;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class TemplateOneFileDto implements TemplateDto {
     @NotNull(message = "이 값이 공백일 순 없습니다")
     private PortfolioFileDto portfolio;
@@ -25,12 +27,12 @@ public class TemplateOneFileDto implements TemplateDto {
     private String highschoolName;
     private String highschoolMajor;
     private String highschoolGraduation;
-    private String highschoolScroe;
-    private String colleageDate;
-    private String colleageName;
-    private String colleageMajor;
-    private String colleageScore;
-    private String colleageGraduation;
+    private String highschoolScore;
+    private String collegeDate;
+    private String collegeName;
+    private String collegeMajor;
+    private String collegeScore;
+    private String collegeGraduation;
     private String graduateschoolDate;
     private String graduateschoolName;
     private String graduateschoolMajor;

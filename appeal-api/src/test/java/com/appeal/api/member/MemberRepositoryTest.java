@@ -1,7 +1,7 @@
 package com.appeal.api.member;
 
 import com.appeal.api.common.Authority;
-import com.appeal.api.member.dto.SignUpDto;
+import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.exception.notfound.NotFoundMemberException;
@@ -55,7 +55,7 @@ class MemberRepositoryTest {
 
     private Member makeMember(String email, String name, String password){
         return
-                Member.createMember(SignUpDto.builder().
+                Member.createMember(MemberDto.builder().
                         email(email).
                         name(name).
                         password(password)
