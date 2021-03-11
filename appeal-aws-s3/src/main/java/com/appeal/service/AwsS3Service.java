@@ -43,14 +43,17 @@ public class AwsS3Service {
     }
 
     public String upload(MultipartFile file){
-        String fileName = file.getOriginalFilename();
         // 이름이 같으면 오버라이딩 되는 것 같다. 이름 저장할 때 생각해서 넣어줘야할 듯
+        String fileName = null;
 
         try {
+            fileName = file.getOriginalFilename();
             s3Client.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), null)
                     .withCannedAcl(CannedAccessControlList.PublicRead));
         }catch (IOException e){
             throw new FailImageUploadException("이미지업로드에 실패했습니다!");
+        }catch (NullPointerException e){
+            return null;
         }
         return s3Client.getUrl(bucket, fileName).toString();
     }

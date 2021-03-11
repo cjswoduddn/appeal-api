@@ -1,6 +1,7 @@
 package com.appeal.api.portfolio.controller;
 
 import com.appeal.api.advice.GlobalExceptionHandler;
+import com.appeal.api.member.dto.MemberSession;
 import com.appeal.api.portfolio.service.TemplateTwoService;
 import com.appeal.api.security.handler.CustomAuthenticationFailureHandler;
 import com.appeal.api.security.handler.CustomAuthenticationSuccessHandler;
@@ -65,6 +66,21 @@ class TemplateTwoControllerTest {
                 .andExpect(status().isBadRequest())
         ;
     }
+//    @Test
+//    @DisplayName("템플릿 생성 정상적인 요청")
+//    @WithMockUser
+//    public void createSuccess() throws Exception{
+//        //given
+//        Long id = 1L;
+//        when(templateTwoService.createTemplate(any(), any())).thenReturn(id);
+//        //then
+//        mvc.perform(
+//                multipart(TEMPLATE_URL)
+//                .file(portfolioFileDtoThumbnail)
+//        )
+//                .andExpect(status().isCreated())
+//                ;
+//    }
     /**
      * 이슈 : 인증객체 안에 있는 인증 객체에 대해서는 @Valid가 먹히지 않는다. 생각해보자
      */
