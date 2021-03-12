@@ -14,4 +14,12 @@ public class MemberDto {
     private String password;
     @NotBlank(message = "이름을 입력하세요")
     private String name;
+
+    public static MemberDto createMemberDto(MemberSession session){
+        MemberDto member = new MemberDto();
+        member.email = session.getEmail();
+        member.password = session.getPassword();
+        member.name = session.getName();
+        return member;
+    }
 }

@@ -36,13 +36,9 @@ public class MemberController {
 
     @GetMapping
     public ResponseEntity<MemberDto> getMember(@AuthenticatedMember MemberSession memberSession){
-        MemberDto memberDto = new MemberDto();
-        memberDto.setEmail(memberSession.getEmail());
-        memberDto.setName(memberSession.getName());
-        memberDto.setPassword(memberSession.getPassword());
         return ResponseEntity
                 .ok()
-                .body(memberDto)
+                .body(MemberDto.createMemberDto(memberSession))
                 ;
     }
 
