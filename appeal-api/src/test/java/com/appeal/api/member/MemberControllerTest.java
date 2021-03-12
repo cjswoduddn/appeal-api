@@ -1,13 +1,17 @@
 package com.appeal.api.member;
 
 import com.appeal.api.advice.GlobalExceptionHandler;
+import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.controller.MemberController;
+import com.appeal.api.member.dto.MemberSession;
 import com.appeal.api.member.dto.UpdateMemberDto;
 import com.appeal.api.member.service.MemberService;
 import com.appeal.api.security.handler.CustomAuthenticationFailureHandler;
 import com.appeal.api.security.handler.CustomAuthenticationSuccessHandler;
+import com.appeal.api.security.sevice.MemberContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,10 +20,19 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -126,6 +139,22 @@ class MemberControllerTest {
                 .andExpect(status().isMethodNotAllowed());
 
         //then
+    }
+
+    @Test
+    @DisplayName("유저정보 조회 시 제대로 세션이 과 dto가 동작하는지")
+    @WithMockUser
+    public void getMember() throws Exception{
+        //given
+        MemberDto memberDto = new MemberDto("email", "pw", "name");
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                MemberSession.createMemberSession(Member.createMember(memberDto)), null, new ArrayList<GrantedAuthority>());
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+        mvc.perform(
+                get(requestUrl)
+        )
+                .andExpect(status().isOk());
     }
 
     public static String asJsonString(final Object obj){

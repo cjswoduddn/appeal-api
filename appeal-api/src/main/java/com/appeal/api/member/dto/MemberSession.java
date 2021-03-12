@@ -18,7 +18,7 @@ public class MemberSession implements Serializable {
         memberSession.id = member.getId();
         memberSession.email = member.getEmail();
         memberSession.password = member.getPassword();
-        memberSession.name = memberSession.getName();
+        memberSession.name = member.getName();
         return memberSession;
     }
 
