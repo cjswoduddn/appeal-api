@@ -1,8 +1,8 @@
 package com.appeal.api.member.dto.portfolio;
 
-import com.appeal.api.portfolio.dto.portfolio.PortfolioFileDto;
-import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoDto;
-import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoFileDto;
+import com.appeal.api.portfolio.dto.PortfolioFileDto;
+import com.appeal.api.template.dto.templatetwo.TemplateTwoDto;
+import com.appeal.api.template.dto.templatetwo.TemplateTwoFileDto;
 import com.appeal.exception.UnexpectedMethodArgumentNullPointerException;
 import com.appeal.service.AwsS3Service;
 import org.junit.jupiter.api.BeforeEach;
