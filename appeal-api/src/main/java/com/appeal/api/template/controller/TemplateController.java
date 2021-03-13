@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
-public class TemplateController<D extends TemplateDto, S extends TemplateService>  {
+public class TemplateController<D extends TemplateDto>{
 
-    private final S templateService;
+    private final TemplateService templateService;
 
     /**
      *  dto변환 시 setter는 필수 중의 필수
      */
     @PostMapping
-    public ResponseEntity<Long> createTemplate(@AuthenticatedMember MemberSession session, @Valid  D dto){
+    public ResponseEntity<Long> createTemplate(@AuthenticatedMember MemberSession session, @Valid D dto){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(templateService.createTemplate(session, dto))

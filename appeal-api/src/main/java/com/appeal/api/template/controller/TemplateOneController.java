@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/templateone")
-public class TemplateOneController extends TemplateController<TemplateOneFileDto, TemplateOneService> {
+public class TemplateOneController extends TemplateController<TemplateOneFileDto> {
+
     public TemplateOneController(TemplateOneService templateService) {
         super(templateService);
     }
