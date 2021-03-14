@@ -39,8 +39,9 @@ public class TemplateTwoDto implements TemplateDto {
     public static TemplateTwoDto convertDomainToDto(TemplateTwo templateTwo) {
         TemplateTwoDto templateTwoDto = new TemplateTwoDto();
         templateTwoDto.convertPortfolioToPortfolioDto(templateTwo.getPortfolio());
+        templateTwoDto.convertTemplateTwoProjectToTemplateTwoProjectDto(templateTwo.getProjects());
         templateTwoDto.convertTemplateTwoCareerToTemplateTwoCareerDto(templateTwo.getCareers());
-        return null;
+        return templateTwoDto;
     }
 
     private void convertTemplateTwoCareerToTemplateTwoCareerDto(List<TemplateTwoCareer> careers){
@@ -50,6 +51,7 @@ public class TemplateTwoDto implements TemplateDto {
             .title(career.getTitle())
             .intro(career.getIntro())
             .position(career.getPosition())
+            .stack(career.getStack())
             .build())
             ;
         });
