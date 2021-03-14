@@ -2,16 +2,14 @@ package com.appeal.api.portfolio.controller;
 
 import com.appeal.api.member.dto.AuthenticatedMember;
 import com.appeal.api.member.dto.MemberSession;
-import com.appeal.api.portfolio.dto.portfolio.PortfolioDto;
+import com.appeal.api.portfolio.dto.PortfolioDto;
 import com.appeal.api.portfolio.service.PortfolioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RequiredArgsConstructor

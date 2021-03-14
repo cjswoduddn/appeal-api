@@ -1,10 +1,10 @@
 package com.appeal.api.portfolio.controller;
 
 import com.appeal.api.advice.GlobalExceptionHandler;
-import com.appeal.api.member.dto.MemberSession;
-import com.appeal.api.portfolio.service.TemplateTwoService;
+import com.appeal.api.template.service.TemplateTwoService;
 import com.appeal.api.security.handler.CustomAuthenticationFailureHandler;
 import com.appeal.api.security.handler.CustomAuthenticationSuccessHandler;
+import com.appeal.api.template.controller.TemplateTwoController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,6 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 

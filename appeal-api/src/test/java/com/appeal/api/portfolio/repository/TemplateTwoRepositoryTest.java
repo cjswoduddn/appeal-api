@@ -1,14 +1,15 @@
 package com.appeal.api.portfolio.repository;
 
 import com.appeal.api.member.dto.MemberDto;
-import com.appeal.api.portfolio.dto.portfolio.PortfolioDto;
-import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoCareerDto;
-import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoDto;
-import com.appeal.api.portfolio.dto.template.templatetwo.TemplateTwoProjectDto;
+import com.appeal.api.portfolio.dto.PortfolioDto;
+import com.appeal.api.template.dto.templatetwo.TemplateTwoCareerDto;
+import com.appeal.api.template.dto.templatetwo.TemplateTwoDto;
+import com.appeal.api.template.dto.templatetwo.TemplateTwoProjectDto;
 import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.api.portfolio.domain.Portfolio;
-import com.appeal.api.portfolio.domain.templatetwo.TemplateTwo;
+import com.appeal.api.template.domain.templatetwo.TemplateTwo;
+import com.appeal.api.template.repository.TemplateTwoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 class TemplateTwoRepositoryTest {
 
-    @Autowired TemplateTwoRepository templateTwoRepository;
+    @Autowired
+    TemplateTwoRepository templateTwoRepository;
     @Autowired
     EntityManager em;
     @Autowired
