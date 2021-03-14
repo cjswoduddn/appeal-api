@@ -21,7 +21,7 @@
 
 
 ## 테이블 설계
-![er_diagram](./images/er_diagramv3.PNG)
+![er_diagram](./images/er_diagram4.PNG)
 
 
 ## 개발환경

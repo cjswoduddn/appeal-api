@@ -4,11 +4,13 @@ import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.dto.MemberSession;
 import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.api.template.domain.templateone.TemplateOne;
+import com.appeal.api.template.domain.templatetwo.TemplateTwo;
 import com.appeal.api.template.dto.TemplateDto;
 import com.appeal.api.template.dto.templateone.TemplateOneDto;
 import com.appeal.api.template.dto.templateone.TemplateOneFileDto;
 import com.appeal.api.template.repository.TemplateOneRepository;
 import com.appeal.exception.notfound.NotFoundMemberException;
+import com.appeal.exception.notfound.NotFoundPortfolioException;
 import com.appeal.service.AwsS3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,8 @@ public class TemplateOneService implements TemplateService{
 
     @Override
     public TemplateDto getTemplateById(Long id) {
-        return null;
+        TemplateOne templateOne = templateOneRepository.findById(id)
+                .orElseThrow(()-> new NotFoundPortfolioException("해당 포트폴리오는 없습니다"));
+        return TemplateOneDto.convertDomainToDto(templateOne);
     }
 }

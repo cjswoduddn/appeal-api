@@ -1,6 +1,11 @@
 package com.appeal.api.template.dto.templateone;
 
+import com.appeal.api.portfolio.domain.Portfolio;
 import com.appeal.api.portfolio.dto.PortfolioDto;
+import com.appeal.api.template.domain.templateone.TemplateOne;
+import com.appeal.api.template.domain.templateone.TemplateOneCareer;
+import com.appeal.api.template.domain.templateone.TemplateOneCertificate;
+import com.appeal.api.template.dto.TemplateDto;
 import com.appeal.service.AwsS3Service;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter
-public class TemplateOneDto {
+public class TemplateOneDto implements TemplateDto {
     private PortfolioDto portfolio;
     private List<TemplateOneCertificateDto> certificates = new ArrayList<>();
     private List<TemplateOneCareerDto> careers = new ArrayList<>();
@@ -65,6 +70,7 @@ public class TemplateOneDto {
         templateOneDto.militaryStatus = dto.getMilitaryStatus();
         return templateOneDto;
     }
+
     private void convertPortfolioFileDtoToStringUrlDto(TemplateOneFileDto dto, AwsS3Service s3Service) {
         this.portfolio =
                 PortfolioDto.builder()
@@ -76,4 +82,45 @@ public class TemplateOneDto {
                         .build()
         ;
     }
+
+    public static TemplateOneDto convertDomainToDto(TemplateOne templateOne) {
+        TemplateOneDto templateOneDto = new TemplateOneDto();
+        templateOneDto.convertPortfolioToPortfolioDto(templateOne.getPortfolio());
+        templateOneDto.convertCareerToCareerDto(templateOne.getCareers());
+        templateOneDto.convertCertificateToCertificateDto(templateOne.getCertificates());
+        return templateOneDto;
+    }
+
+    private void convertCertificateToCertificateDto(List<TemplateOneCertificate> certificates) {
+        certificates.forEach(certificate->{
+            this.certificates.add(TemplateOneCertificateDto.builder()
+            .date(certificate.getDate())
+            .title(certificate.getTitle())
+            .origin(certificate.getOrigin())
+            .build());
+        });
+    }
+
+    private void convertCareerToCareerDto(List<TemplateOneCareer> careers) {
+        careers.forEach(career->{
+            this.careers.add(TemplateOneCareerDto.builder()
+            .date(career.getDate())
+            .name(career.getName())
+            .title(career.getTitle())
+            .position(career.getPosition())
+            .build());
+        });
+    }
+
+    private void convertPortfolioToPortfolioDto(Portfolio portfolio) {
+        this.portfolio = PortfolioDto.builder()
+                .intro(portfolio.getIntro())
+                .name(portfolio.getName())
+                .skill(portfolio.getSkill())
+                .thumbnail(portfolio.getThumbnail())
+                .title(portfolio.getTitle())
+                .build()
+                ;
+    }
+
 }
