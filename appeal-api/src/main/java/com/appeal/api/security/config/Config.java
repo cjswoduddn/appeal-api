@@ -59,10 +59,4 @@ public class Config {
         return source;
     }
 
-    @Bean
-    public CookieSerializer cookieSerializer() {
-        DefaultCookieSerializer serializer = new DefaultCookieSerializer();
-        serializer.setSameSite("none");
-        return serializer;
-    }
 }
