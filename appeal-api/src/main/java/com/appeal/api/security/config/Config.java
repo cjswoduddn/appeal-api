@@ -47,8 +47,7 @@ public class Config {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-//        configuration.addAllowedOriginPattern("*");
-        configuration.addAllowedOrigin("175.223.21.54/**");
+        configuration.addAllowedOriginPattern("*");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.setAllowCredentials(true);
