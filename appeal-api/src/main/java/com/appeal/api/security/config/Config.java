@@ -50,7 +50,8 @@ public class Config {
         CorsConfiguration configuration = new CorsConfiguration();
 
 //        configuration.addAllowedOriginPattern("*");
-        configuration.addAllowedOrigin("http://www.appeal.icu");
+//        configuration.addAllowedOrigin("http://www.appeal.icu");
+        configuration.addAllowedOrigin("http://localhost:3000");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.setAllowCredentials(true);
