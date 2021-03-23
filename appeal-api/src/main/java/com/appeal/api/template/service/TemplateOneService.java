@@ -9,11 +9,14 @@ import com.appeal.api.template.dto.TemplateDto;
 import com.appeal.api.template.dto.templateone.TemplateOneDto;
 import com.appeal.api.template.dto.templateone.TemplateOneFileDto;
 import com.appeal.api.template.repository.TemplateOneRepository;
+import com.appeal.exception.NoAuthorizationException;
 import com.appeal.exception.notfound.NotFoundMemberException;
 import com.appeal.exception.notfound.NotFoundPortfolioException;
 import com.appeal.service.AwsS3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -39,5 +42,17 @@ public class TemplateOneService implements TemplateService{
         TemplateOne templateOne = templateOneRepository.findById(id)
                 .orElseThrow(()-> new NotFoundPortfolioException("해당 포트폴리오는 없습니다"));
         return TemplateOneDto.convertDomainToDto(templateOne);
+    }
+
+    @Override
+    public void deleteTemplate(MemberSession session, Long id) {
+        Member member = memberRepository.findById(session.getId())
+                .orElseThrow(() -> new NotFoundMemberException("없는 유저입니다"));
+        TemplateOne templateOne = templateOneRepository.findById(id)
+                .orElseThrow(()-> new NotFoundPortfolioException("해당 포트폴리오는 없습니다"));
+
+        if(templateOne.getPortfolio().getMember() != member)
+            throw new NoAuthorizationException("삭제 권한이 없습니다");
+        templateOneRepository.delete(templateOne);
     }
 }

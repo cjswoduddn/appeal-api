@@ -8,6 +8,7 @@ import com.appeal.api.template.dto.templatetwo.TemplateTwoFileDto;
 import com.appeal.api.member.domain.Member;
 import com.appeal.api.template.domain.templatetwo.TemplateTwo;
 import com.appeal.api.template.repository.TemplateTwoRepository;
+import com.appeal.exception.NoAuthorizationException;
 import com.appeal.exception.notfound.NotFoundMemberException;
 import com.appeal.exception.notfound.NotFoundPortfolioException;
 import com.appeal.service.AwsS3Service;
@@ -41,5 +42,26 @@ public class TemplateTwoService implements TemplateService{
         TemplateTwo templateTwo = templateTwoRepository.findById(id)
                 .orElseThrow(()-> new  NotFoundPortfolioException("해당 포트폴리오는 없습니다"));
         return TemplateTwoDto.convertDomainToDto(templateTwo);
+    }
+
+    /**
+     *  우선 하나의 포폴을 삭제하기 위해 수행하는 쿼리는 총 8방
+     *  멤버를 조회하기 위한 1번 -> 필수
+     *  템플릿+포트폴리오 1번 -> 필수
+     *  템플릿의 커리어와 프로젝을 찾기 위해 각각 1번 -> 현 체제에서 필수
+     *  템플릿, 포폴, 커리어, 프로젝을 모두 삭제 총 4번 -> 적합
+     *  내 생각엔 삭제 연산이 매우 흔하지 않기 때문에 이정도는 괜찮다고 여겨지는데?
+     */
+
+    @Override
+    public void deleteTemplate(MemberSession session, Long id) {
+        Member member = memberRepository.findById(session.getId())
+                .orElseThrow(() -> new NotFoundMemberException("없는 유저입니다"));
+        TemplateTwo templateTwo = templateTwoRepository.findById(id)
+                .orElseThrow(()-> new  NotFoundPortfolioException("해당 포트폴리오는 없습니다"));
+
+        if(member != templateTwo.getPortfolio().getMember())
+            throw new NoAuthorizationException("삭제 권한이 없습니다");
+        templateTwoRepository.delete(templateTwo);
     }
 }

@@ -7,4 +7,6 @@ public interface TemplateService {
     Long createTemplate(MemberSession session, TemplateDto dto);
 
     TemplateDto getTemplateById(Long id);
+
+    void deleteTemplate(MemberSession session, Long id);
 }
