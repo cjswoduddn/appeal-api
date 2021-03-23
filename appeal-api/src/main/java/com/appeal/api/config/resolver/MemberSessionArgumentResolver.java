@@ -1,6 +1,7 @@
 package com.appeal.api.config.resolver;
 
 import com.appeal.api.member.dto.AuthenticatedMember;
+import com.appeal.api.member.dto.MemberSession;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,8 @@ public class MemberSessionArgumentResolver implements HandlerMethodArgumentResol
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
                                   NativeWebRequest webRequest,
                                   WebDataBinderFactory binderFactory) throws Exception {
-        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(!(principal instanceof MemberSession));
+        return principal;
     }
 }
