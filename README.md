@@ -58,6 +58,9 @@
 - TemplateTwo에 대한 read구현(fetch join 적용)
 - Portfolio에 Member를 set할 때 세션 값을 가져오는 역할 변경
 
+3.2(2021-03-23)
+- Template delete구현
+
 
 ## todo 리스트
 

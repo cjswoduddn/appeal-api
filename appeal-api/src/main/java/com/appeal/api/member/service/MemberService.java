@@ -62,4 +62,5 @@ public class MemberService {
                 });
         member.updateInfo(dto);
     }
+
 }

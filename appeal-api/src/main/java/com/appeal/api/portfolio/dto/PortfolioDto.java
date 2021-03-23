@@ -16,6 +16,7 @@ public class PortfolioDto {
     private String skill;
     private String name;
     private String intro;
+    private String templateType;
 
     public static PortfolioDto createPortfolioDto(Portfolio portfolio) {
         return PortfolioDto.builder()
@@ -24,6 +25,7 @@ public class PortfolioDto {
                 .skill(portfolio.getSkill())
                 .thumbnail(portfolio.getThumbnail())
                 .intro(portfolio.getTitle())
+                .templateType(portfolio.getTemplateType())
                 .build()
                 ;
     }
