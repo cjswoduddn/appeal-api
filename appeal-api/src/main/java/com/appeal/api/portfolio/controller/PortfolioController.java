@@ -7,6 +7,7 @@ import com.appeal.api.portfolio.service.PortfolioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +28,14 @@ public class PortfolioController {
         return ResponseEntity
                 .ok()
                 .body(portfolioService.getBySession(session))
+                ;
+    }
+
+    @GetMapping("/{keyword}")
+    public ResponseEntity<List<PortfolioDto>> getPortfolioByKeyword(@PathVariable("keyword") String keyword){
+        return ResponseEntity
+                .ok()
+                .body(portfolioService.getPortfolioByKeyword(keyword))
                 ;
     }
 
