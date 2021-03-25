@@ -30,4 +30,13 @@ public class PortfolioService {
         });
         return dtos;
     }
+
+    public List<PortfolioDto> getPortfolioByKeyword(String keyword) {
+        List<Portfolio> portfolios = portfolioRepository.findByKeyword(keyword);
+        List<PortfolioDto> dtos = new ArrayList<>();
+        portfolios.forEach(portfolio -> {
+            dtos.add(PortfolioDto.createPortfolioDto(portfolio));
+        });
+        return dtos;
+    }
 }

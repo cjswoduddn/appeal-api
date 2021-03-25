@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class PortfolioDto {
+    private Long id;
     private String thumbnail;
     private String title;
     private String skill;
@@ -20,6 +21,7 @@ public class PortfolioDto {
 
     public static PortfolioDto createPortfolioDto(Portfolio portfolio) {
         return PortfolioDto.builder()
+                .id(portfolio.getId())
                 .intro(portfolio.getIntro())
                 .name(portfolio.getName())
                 .skill(portfolio.getSkill())
