@@ -6,7 +6,8 @@ import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.api.portfolio.domain.Portfolio;
 import com.appeal.api.portfolio.dto.PortfolioDto;
 import com.appeal.api.portfolio.repository.PortfolioRepository;
-import com.appeal.exception.notfound.NotFoundMemberException;
+import com.appeal.exception.ErrorCode;
+import com.appeal.exception.NotFoundMemberException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class PortfolioService {
 
     public List<PortfolioDto> getBySession(MemberSession session){
         Member member = memberRepository.findById(session.getId())
-                .orElseThrow(() -> new NotFoundMemberException("nonono"));
+                .orElseThrow(() -> new NotFoundMemberException(ErrorCode.NOT_FOUND_MEMBER));
         List<Portfolio> portfolios = portfolioRepository.findByMember(member);
         List<PortfolioDto> dtos = new ArrayList<>();
         portfolios.forEach(portfolio -> {

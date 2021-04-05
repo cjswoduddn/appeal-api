@@ -1,6 +1,7 @@
 package com.appeal.service;
 
-import com.appeal.exception.SendMailFailureException;
+import com.appeal.exception.ErrorCode;
+import com.appeal.exception.FailSendMailException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -32,7 +33,7 @@ public class MailService {
             mailSender.send(message);
             return code;
         } catch (MessagingException e) {
-            throw new SendMailFailureException("인증메일 전송에 실패하였습니다");
+            throw new FailSendMailException(ErrorCode.FAIL_SEND_EMAIL);
         }
     }
 

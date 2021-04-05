@@ -4,7 +4,8 @@ import com.appeal.api.common.Authority;
 import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.repository.MemberRepository;
-import com.appeal.exception.notfound.NotFoundMemberException;
+import com.appeal.exception.ErrorCode;
+import com.appeal.exception.NotFoundMemberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ class MemberRepositoryTest {
 
         //when
         Member member = memberRepository.findByEmail(member1.getEmail())
-                .orElseThrow(()-> new NotFoundMemberException("fjfj"));
+                .orElseThrow(()-> new NotFoundMemberException(ErrorCode.NOT_FOUND_MEMBER));
 
         //then
         assertNotNull(member.getId());

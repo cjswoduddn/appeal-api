@@ -8,9 +8,10 @@ import com.appeal.api.template.dto.templatetwo.TemplateTwoFileDto;
 import com.appeal.api.member.domain.Member;
 import com.appeal.api.template.domain.templatetwo.TemplateTwo;
 import com.appeal.api.template.repository.TemplateTwoRepository;
-import com.appeal.exception.NoAuthorizationException;
-import com.appeal.exception.notfound.NotFoundMemberException;
-import com.appeal.exception.notfound.NotFoundPortfolioException;
+import com.appeal.exception.ErrorCode;
+import com.appeal.exception.NotAuthorizationException;
+import com.appeal.exception.NotFoundMemberException;
+import com.appeal.exception.NotFoundPortfolioException;
 import com.appeal.service.AwsS3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class TemplateTwoService implements TemplateService{
     @Override
     public Long createTemplate(MemberSession session, TemplateDto dto) {
         Member member = memberRepository.findById(session.getId())
-                .orElseThrow(() -> new NotFoundMemberException("없는 유저입니다"));
+                .orElseThrow(() -> new NotFoundMemberException(ErrorCode.NOT_FOUND_MEMBER));
 
         TemplateTwoDto templateTwoDto = TemplateTwoDto.convertFileDtoToStringUrl((TemplateTwoFileDto) dto, s3Service);
         TemplateTwo templateTwo = TemplateTwo.createTemplateTwo(templateTwoDto, member);
@@ -40,7 +41,7 @@ public class TemplateTwoService implements TemplateService{
     @Override
     public TemplateDto getTemplateById(Long id) {
         TemplateTwo templateTwo = templateTwoRepository.findById(id)
-                .orElseThrow(()-> new  NotFoundPortfolioException("해당 포트폴리오는 없습니다"));
+                .orElseThrow(()-> new  NotFoundPortfolioException(ErrorCode.NOT_FOUND_PORTFOLIO));
         return TemplateTwoDto.convertDomainToDto(templateTwo);
     }
 
@@ -56,12 +57,12 @@ public class TemplateTwoService implements TemplateService{
     @Override
     public void deleteTemplate(MemberSession session, Long id) {
         Member member = memberRepository.findById(session.getId())
-                .orElseThrow(() -> new NotFoundMemberException("없는 유저입니다"));
+                .orElseThrow(() -> new NotFoundMemberException(ErrorCode.NOT_FOUND_MEMBER));
         TemplateTwo templateTwo = templateTwoRepository.findById(id)
-                .orElseThrow(()-> new  NotFoundPortfolioException("해당 포트폴리오는 없습니다"));
+                .orElseThrow(()-> new  NotFoundPortfolioException(ErrorCode.NOT_FOUND_PORTFOLIO));
 
         if(member != templateTwo.getPortfolio().getMember())
-            throw new NoAuthorizationException("삭제 권한이 없습니다");
+            throw new NotAuthorizationException(ErrorCode.NOT_AUTHORIZATION);
         templateTwoRepository.delete(templateTwo);
     }
 }

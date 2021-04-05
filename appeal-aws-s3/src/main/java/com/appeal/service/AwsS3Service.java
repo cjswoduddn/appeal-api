@@ -7,7 +7,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.appeal.exception.FailImageUploadException;
+import com.appeal.exception.ErrorCode;
+import com.appeal.exception.FailUploadImageException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -51,7 +52,7 @@ public class AwsS3Service {
             s3Client.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), null)
                     .withCannedAcl(CannedAccessControlList.PublicRead));
         }catch (IOException e){
-            throw new FailImageUploadException("이미지업로드에 실패했습니다!");
+            throw new FailUploadImageException(ErrorCode.FAIL_UPLOAD_IMAGE);
         }catch (NullPointerException e){
             return null;
         }
