@@ -6,6 +6,7 @@ import com.appeal.api.template.domain.templatetwo.TemplateTwoCareer;
 import com.appeal.api.template.domain.templatetwo.TemplateTwoProject;
 import com.appeal.api.portfolio.dto.PortfolioDto;
 import com.appeal.api.template.dto.TemplateDto;
+import com.appeal.exception.ErrorCode;
 import com.appeal.exception.UnexpectedMethodArgumentNullPointerException;
 import com.appeal.service.AwsS3Service;
 import lombok.AccessLevel;
@@ -30,7 +31,7 @@ public class TemplateTwoDto implements TemplateDto {
             templateTwoDto.convertProjectFileDtotoStringUrlDto(dto, s3Service);
             templateTwoDto.careers = dto.getCareers();  // can null
         }catch (NullPointerException e){
-            throw new UnexpectedMethodArgumentNullPointerException("Null이 나올 수 없는 상황입니다");
+            throw new UnexpectedMethodArgumentNullPointerException(ErrorCode.UNEXPECTED_METHOD_ARGUMENT_NULLPOINTER);
         }
         return templateTwoDto;
     }

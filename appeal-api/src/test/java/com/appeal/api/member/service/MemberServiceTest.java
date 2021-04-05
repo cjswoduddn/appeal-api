@@ -4,8 +4,8 @@ import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.exception.DuplicateEmailException;
-import com.appeal.exception.IllegalEmailValidAccessExcetion;
-import com.appeal.exception.notfound.NotFoundMemberException;
+import com.appeal.exception.FailValidEmailExcetion;
+import com.appeal.exception.NotFoundMemberException;
 import com.appeal.service.MailService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -63,7 +63,7 @@ class MemberServiceTest {
         when(redisTemplate.opsForValue()).thenReturn(ops);
         when(ops.get(code)).thenReturn(null);
         //then
-        assertThrows(IllegalEmailValidAccessExcetion.class, ()->memberService.validSignUp(code));
+        assertThrows(FailValidEmailExcetion.class, ()->memberService.validSignUp(code));
     }
 
     @Test

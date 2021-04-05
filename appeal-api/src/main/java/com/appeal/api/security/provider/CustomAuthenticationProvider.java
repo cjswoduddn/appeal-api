@@ -1,7 +1,7 @@
 package com.appeal.api.security.provider;
 
 import com.appeal.api.common.Authority;
-import com.appeal.exception.NoValidAccountException;
+import com.appeal.exception.NotValidAccountException;
 import com.appeal.api.security.sevice.MemberContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -31,7 +31,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         SimpleGrantedAuthority rolePre = new SimpleGrantedAuthority(Authority.ROLE_PRE.name());
         if(memberContext.getAuthorities().contains(rolePre))
-            throw new NoValidAccountException("미인증 계정입니다");
+            throw new NotValidAccountException("미인증 계정입니다");
 
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
