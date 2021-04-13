@@ -1,4 +1,4 @@
-package com.appeal.api.config.resolver;
+package com.appeal.api.config.web.resolver;
 
 import com.appeal.api.member.dto.AuthenticatedMember;
 import com.appeal.api.member.dto.MemberSession;

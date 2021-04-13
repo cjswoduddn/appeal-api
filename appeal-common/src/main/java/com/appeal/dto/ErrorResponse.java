@@ -1,6 +1,6 @@
-package com.appeal.api.advice.dto;
+package com.appeal.dto;
 
-import com.appeal.exception.ErrorCode;
+import com.appeal.code.ErrorCode;
 import lombok.Getter;
 
 

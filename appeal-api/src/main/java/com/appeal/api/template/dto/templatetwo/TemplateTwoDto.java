@@ -6,7 +6,7 @@ import com.appeal.api.template.domain.templatetwo.TemplateTwoCareer;
 import com.appeal.api.template.domain.templatetwo.TemplateTwoProject;
 import com.appeal.api.portfolio.dto.PortfolioDto;
 import com.appeal.api.template.dto.TemplateDto;
-import com.appeal.exception.ErrorCode;
+import com.appeal.code.ErrorCode;
 import com.appeal.exception.UnexpectedMethodArgumentNullPointerException;
 import com.appeal.service.AwsS3Service;
 import lombok.AccessLevel;

@@ -4,7 +4,7 @@ import com.appeal.api.common.Authority;
 import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.repository.MemberRepository;
-import com.appeal.exception.ErrorCode;
+import com.appeal.code.ErrorCode;
 import com.appeal.exception.NotFoundMemberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

@@ -1,6 +1,6 @@
 package com.appeal.service;
 
-import com.appeal.exception.ErrorCode;
+import com.appeal.code.ErrorCode;
 import com.appeal.exception.FailSendMailException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

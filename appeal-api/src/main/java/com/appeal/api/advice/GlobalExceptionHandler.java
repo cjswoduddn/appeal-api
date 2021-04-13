@@ -1,8 +1,8 @@
 package com.appeal.api.advice;
 
-import com.appeal.api.advice.dto.ErrorResponse;
+import com.appeal.dto.ErrorResponse;
 import com.appeal.exception.BusinessException;
-import com.appeal.exception.ErrorCode;
+import com.appeal.code.ErrorCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

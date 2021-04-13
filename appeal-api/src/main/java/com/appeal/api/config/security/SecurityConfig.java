@@ -1,4 +1,4 @@
-package com.appeal.api.security.config;
+package com.appeal.api.config.security;
 
 import com.appeal.api.security.filter.CustomUsernamePasswordAuthenticationFilter;
 import com.appeal.api.security.handler.CustomAuthenticationFailureHandler;

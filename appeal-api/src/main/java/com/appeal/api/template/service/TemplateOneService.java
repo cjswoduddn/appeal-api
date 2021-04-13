@@ -8,7 +8,7 @@ import com.appeal.api.template.dto.TemplateDto;
 import com.appeal.api.template.dto.templateone.TemplateOneDto;
 import com.appeal.api.template.dto.templateone.TemplateOneFileDto;
 import com.appeal.api.template.repository.TemplateOneRepository;
-import com.appeal.exception.ErrorCode;
+import com.appeal.code.ErrorCode;
 import com.appeal.exception.NotAuthorizationException;
 import com.appeal.exception.NotFoundMemberException;
 import com.appeal.exception.NotFoundPortfolioException;

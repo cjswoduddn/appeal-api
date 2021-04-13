@@ -1,4 +1,4 @@
-package com.appeal.api.config;
+package com.appeal.api.config.jpa;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

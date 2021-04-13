@@ -7,11 +7,16 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Builder @AllArgsConstructor
-@Entity @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@AllArgsConstructor
+@Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Portfolio extends BaseTimeInfo {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "PORTFOLIO_ID")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PORTFOLIO_ID")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -28,14 +33,14 @@ public class Portfolio extends BaseTimeInfo {
     public static Portfolio createPortfolio(PortfolioDto portfolio, String templateType, Member member) {
         return
                 Portfolio.builder()
-                .member(member)
-                .intro(portfolio.getIntro())
-                .name(portfolio.getName())
-                .skill(portfolio.getSkill())
-                .templateType(templateType)
-                .thumbnail(portfolio.getThumbnail())
-                .title(portfolio.getTitle())
-                .build()
+                        .member(member)
+                        .intro(portfolio.getIntro())
+                        .name(portfolio.getName())
+                        .skill(portfolio.getSkill())
+                        .templateType(templateType)
+                        .thumbnail(portfolio.getThumbnail())
+                        .title(portfolio.getTitle())
+                        .build()
                 ;
     }
 }

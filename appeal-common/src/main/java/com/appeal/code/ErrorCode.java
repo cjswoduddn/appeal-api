@@ -1,4 +1,4 @@
-package com.appeal.exception;
+package com.appeal.code;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
