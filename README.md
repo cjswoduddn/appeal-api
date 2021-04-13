@@ -61,12 +61,10 @@
 3.2(2021-03-23)
 - Template delete구현
 
-
-## todo 리스트
-
-- Portfolio 웹계층 테스트 마무리
-- ID로 Portfolio 검색을 위해 JPA 복습하기
-- DDD 관련 서적 읽고 도메인 별로 MSA구성하기
+4.0(2021-04-13)
+- ErrorResponse 및 ErrorCode 설정으로 body에 모든 에러정보 포함
+- SuccessResponse 및 SuccessCode 설정으로 body에 모든 응답정보 포함
+todo: TemplateService설계 문제 해결하고 Response 추가 적용 예정
 
 
 
