@@ -9,7 +9,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PortfolioRepository extends JpaRepository<Portfolio, Long> {
-    List<Portfolio> findByMember(Member member);
+
+    List<Portfolio> findByMemberOrderByCreatedDateDesc(Member member);
 
     @Query("select p " +
             "from Portfolio as p " +

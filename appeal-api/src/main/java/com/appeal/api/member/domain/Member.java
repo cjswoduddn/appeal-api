@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-/**
- * todo : extends BaseTimeInfo
- */
 @Entity @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTimeInfo {
 
@@ -46,7 +43,6 @@ public class Member extends BaseTimeInfo {
     }
 
     public void updateInfo(UpdateMemberDto dto) {
-        password = dto.getPassword();
         name = dto.getName();
     }
 }

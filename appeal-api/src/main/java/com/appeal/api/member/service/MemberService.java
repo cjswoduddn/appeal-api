@@ -4,7 +4,7 @@ import com.appeal.api.member.dto.MemberSession;
 import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.dto.UpdateMemberDto;
 import com.appeal.exception.DuplicateEmailException;
-import com.appeal.exception.ErrorCode;
+import com.appeal.code.ErrorCode;
 import com.appeal.exception.FailValidEmailExcetion;
 import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.repository.MemberRepository;

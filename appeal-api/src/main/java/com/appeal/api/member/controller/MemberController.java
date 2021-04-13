@@ -5,6 +5,8 @@ import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.dto.UpdateMemberDto;
 import com.appeal.api.member.dto.AuthenticatedMember;
 import com.appeal.api.member.service.MemberService;
+import com.appeal.code.SuccessCode;
+import com.appeal.dto.SuccessResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,35 +21,34 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping
-    public ResponseEntity signUp(@Valid @RequestBody MemberDto dto){
+    public ResponseEntity<SuccessResponse> signUp(@Valid @RequestBody MemberDto dto){
         memberService.signUp(dto);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body("you can signin after email validation");
+        return new ResponseEntity<>(SuccessResponse.of(SuccessCode.CREATE_MEMBER), HttpStatus.CREATED);
     }
 
     @GetMapping("/{code}")
-    public ResponseEntity vaildSignUp(@PathVariable("code") String code){
+    public ResponseEntity<SuccessResponse> vaildSignUp(@PathVariable("code") String code){
         memberService.validSignUp(code);
-        return ResponseEntity
-                .ok()
-                .body("인증 성공! 로그인하세용");
+        return new ResponseEntity<>(SuccessResponse.of(SuccessCode.VALID_MEMBER), HttpStatus.OK);
     }
 
     @GetMapping
-    public ResponseEntity<MemberDto> getMember(@AuthenticatedMember MemberSession memberSession){
-        return ResponseEntity
-                .ok()
-                .body(MemberDto.createMemberDto(memberSession))
+    public ResponseEntity<SuccessResponse<MemberDto>> getMyInfomation(@AuthenticatedMember MemberSession memberSession){
+        return new ResponseEntity<>
+                (SuccessResponse.of(SuccessCode.SUCCESS_GET_MY_INFOMATION,
+                        MemberDto.createMemberDto(memberSession)), HttpStatus.OK)
                 ;
+
     }
 
     @PatchMapping
-    public ResponseEntity updateMemberInfo(@AuthenticatedMember MemberSession memberSession, UpdateMemberDto dto){
+    public ResponseEntity<SuccessResponse> updateMemberInfo(@AuthenticatedMember MemberSession memberSession,
+                                                           @RequestBody UpdateMemberDto dto){
         memberService.updateMemberInfo(memberSession, dto);
-        return ResponseEntity
-                .ok()
-                .body("변경 완료!");
+        return new ResponseEntity<>(
+                SuccessResponse.of(SuccessCode.SUCCESS_UPDATE_MEMBER),
+                HttpStatus.OK
+        );
     }
 
 }
