@@ -3,7 +3,6 @@ package com.appeal.dto;
 import com.appeal.code.SuccessCode;
 import lombok.Getter;
 
-import java.util.List;
 
 @Getter
 public class SuccessResponse<D> {

@@ -1,6 +1,9 @@
 # APPEAL PROJECT BACKEND API
 ![logo](./images/logo.PNG)
-
+- SERVICE URL : <http://www.appeal.icu/>
+- 테스트 이메일 : ma8511@naver.com
+- 테스트 비밀번호 : 123412
+- 서비스 소개 : 서비스 템플릿으로 개인 포트폴리오를 작성할 수 있습니다 ^^
 
 ## 프로젝트 아키텍처
 ![architecture](./images/architecturev2.PNG)
@@ -66,6 +69,9 @@
 - SuccessResponse 및 SuccessCode 설정으로 body에 모든 응답정보 포함
 todo: TemplateService설계 문제 해결하고 Response 추가 적용 예정
 
+5.0(2021-04-28)
+- spring cloud를 활용해서 마이크로서비스로 이전 작업 중
+- github URL : [여기](https://github.com/cjswoduddn/appeal-msa)
 
 
 

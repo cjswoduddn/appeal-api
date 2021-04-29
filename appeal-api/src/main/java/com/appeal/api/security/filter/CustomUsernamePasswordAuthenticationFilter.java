@@ -29,7 +29,7 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
 
         String username = signInDto.getEmail();
         username = (username != null) ? username : "";
-        username.trim();
+        username = username.trim();
         String password = signInDto.getPassword();
         password = (password != null) ? password : "";
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password);

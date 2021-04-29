@@ -21,7 +21,7 @@ public class PortfolioService {
 
     public List<PortfolioDto> getPortfolioBySession(MemberSession session) {
         return
-                portfolioRepository.findByMember(memberRepository.findById(session.getId())
+                portfolioRepository.findByMemberOrderByCreatedDateDesc(memberRepository.findById(session.getId())
                         .orElseThrow(() -> new NotFoundMemberException(ErrorCode.NOT_FOUND_MEMBER)))
                         .stream().map(portfolio -> PortfolioDto.createPortfolioDto(portfolio))
                         .collect(Collectors.toList())
