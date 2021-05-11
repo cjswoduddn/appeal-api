@@ -56,9 +56,6 @@ class MemberControllerTest {
     @BeforeEach
     void before(){
         signUpDto = new MemberDto("ma8511@naver.com", "1234", "youngwoo");
-        updateMemberDto = new UpdateMemberDto();
-        updateMemberDto.setName("hello");
-        updateMemberDto.setPassword("world");
     }
 
     @Test

@@ -20,22 +20,7 @@ class PortfolioRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
 
-    @Test
-    @DisplayName("객체로 찾는 마법이 가능한가?")
-    public void findByMemberTest() throws Exception{
-        //given
-        Member member = makeMember("email", "password", "name");
-        memberRepository.save(member);
-        Portfolio p1 = makePortfolio(member);
-        Portfolio p2 = makePortfolio(member);
-        repository.save(p1);
-        repository.save(p2);
-        //when
-        List<Portfolio> portfolios = repository.findByMember(member);
-
-        //then
-        assertEquals(portfolios.size(), 2);
-    }
+  
 
     private Portfolio makePortfolio(Member member){
         return Portfolio.builder()

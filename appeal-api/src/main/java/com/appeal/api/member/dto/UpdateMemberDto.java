@@ -5,8 +5,9 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
-@Getter
+@Getter @Setter
 public class UpdateMemberDto {
     @NotBlank
     private String name;
+
 }
