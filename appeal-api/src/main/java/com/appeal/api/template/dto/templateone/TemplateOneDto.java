@@ -9,9 +9,12 @@ import com.appeal.api.template.dto.TemplateDto;
 import com.appeal.service.AwsS3Service;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.beans.BeanUtils.*;
 
 @Getter @Setter
 public class TemplateOneDto implements TemplateDto {
@@ -85,6 +88,7 @@ public class TemplateOneDto implements TemplateDto {
 
     public static TemplateOneDto convertDomainToDto(TemplateOne templateOne) {
         TemplateOneDto templateOneDto = new TemplateOneDto();
+        copyProperties(templateOne, templateOneDto);
         templateOneDto.convertPortfolioToPortfolioDto(templateOne.getPortfolio());
         templateOneDto.convertCareerToCareerDto(templateOne.getCareers());
         templateOneDto.convertCertificateToCertificateDto(templateOne.getCertificates());

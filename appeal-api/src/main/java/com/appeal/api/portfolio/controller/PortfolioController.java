@@ -23,29 +23,23 @@ public class PortfolioController {
 
     private final PortfolioService portfolioService;
 
-    /**
-     * 사용자가 마이페이지를 통해 자신이 작성한 포트폴리오를 보는 경우
-     */
     @GetMapping
-    public ResponseEntity<SuccessResponse<List<PortfolioDto>>> getMyPortfolio(@AuthenticatedMember MemberSession session) {
+    public ResponseEntity<List<PortfolioDto>> getMyPortfolio(@AuthenticatedMember MemberSession session) {
         return new ResponseEntity<>
                 (
-                        SuccessResponse.of(SuccessCode.SUCCESS_GET_MY_PORTFOLIO,
-                                portfolioService.getPortfolioBySession(session)),
-                        HttpStatus.OK
+                        portfolioService.getPortfolioBySession(session)
+                        , HttpStatus.OK
                 )
                 ;
     }
 
     @GetMapping("/{keyword}")
-    public ResponseEntity<SuccessResponse<List<PortfolioDto>>> getPortfolioByKeyword(@PathVariable("keyword") String keyword) {
+    public ResponseEntity<List<PortfolioDto>> getPortfolioByKeyword(@PathVariable("keyword") String keyword) {
         return new ResponseEntity<>
                 (
-                        SuccessResponse.of(SuccessCode.SUCCESS_GET_PORTFOLIO_BY_KEYWORD
-                                , portfolioService.getPortfolioByKeyword(keyword)),
+                        portfolioService.getPortfolioByKeyword(keyword),
                         HttpStatus.OK
                 )
                 ;
     }
-
 }

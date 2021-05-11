@@ -27,7 +27,8 @@ public class WebConfig implements WebMvcConfigurer {
         serializer.setCookieName("cjswoudddn");
         serializer.setCookiePath("/");
         serializer.setDomainNamePattern("^.+?\\.(\\w+\\.[a-z]+)$");
+        // example : www.appeal.icu => 통과
+        //           api.appeal.icu => 통과
         return serializer;
     }
-
 }

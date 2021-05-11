@@ -38,7 +38,6 @@ public class MemberController {
                 (SuccessResponse.of(SuccessCode.SUCCESS_GET_MY_INFOMATION,
                         MemberDto.createMemberDto(memberSession)), HttpStatus.OK)
                 ;
-
     }
 
     @PatchMapping
