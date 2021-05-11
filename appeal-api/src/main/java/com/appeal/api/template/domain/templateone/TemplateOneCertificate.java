@@ -28,6 +28,6 @@ public class TemplateOneCertificate {
         templateOneCertificate.title = certificate.getTitle();
         templateOneCertificate.origin = certificate.getOrigin();
         templateOneCertificate.templateOne = templateOne;
-        return null;
+        return templateOneCertificate;
     }
 }
