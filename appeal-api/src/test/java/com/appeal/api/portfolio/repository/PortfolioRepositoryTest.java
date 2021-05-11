@@ -20,7 +20,7 @@ class PortfolioRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
 
-  
+
 
     private Portfolio makePortfolio(Member member){
         return Portfolio.builder()
