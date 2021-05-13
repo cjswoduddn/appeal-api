@@ -7,7 +7,7 @@ import lombok.*;
 public class TemplateOneCareerDto {
 
     private String date;
+    private String name;
     private String title;
     private String position;
-    private String name;
 }

@@ -9,7 +9,6 @@ echo "$CURRENT_PID"
 
 if [ ! -z "$CURRENT_PID" ]; then
   kill -9 "$CURRENT_PID"
-  sleep  5
 fi
 
 # shellcheck disable=SC2012
