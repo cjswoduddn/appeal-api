@@ -2,10 +2,8 @@
 
 REPOSITORY=/home/ec2-user/app/step2
 
-echo "build!"
 cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
-echo "what is current java process ID?"
 CURRENT_PID=$(pgrep java)
 echo "$CURRENT_PID"
 
@@ -14,10 +12,9 @@ if [ ! -z "$CURRENT_PID" ]; then
   sleep  5
 fi
 
+# shellcheck disable=SC2012
 JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)
 chmod +x "$JAR_NAME"
 
-nohup java -jar \
-  "$JAR_NAME" \
-  --spring.config.location=$REPOSITORY/application.yml &
+nohup java -jar "$JAR_NAME" --spring.config.location=$REPOSITORY/application.yml &
 

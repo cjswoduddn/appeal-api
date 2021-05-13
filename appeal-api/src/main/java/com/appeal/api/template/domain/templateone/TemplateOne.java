@@ -39,7 +39,7 @@ public class TemplateOne {
     private String highschoolName;
     private String highschoolMajor;
     private String highschoolGraduation;
-    private String highschoolScroe;
+    private String highschoolScore;
     private String colleageDate;
     private String colleageName;
     private String colleageMajor;
@@ -75,7 +75,7 @@ public class TemplateOne {
         templateOne.highschoolName = templateOneDto.getHighschoolName();
         templateOne.highschoolMajor = templateOneDto.getHighschoolMajor();
         templateOne.highschoolGraduation = templateOneDto.getHighschoolGraduation();
-        templateOne.highschoolScroe = templateOneDto.getHighschoolScore();
+        templateOne.highschoolScore = templateOneDto.getHighschoolScore();
         templateOne.colleageDate = templateOneDto.getColleageDate();
         templateOne.colleageName = templateOneDto.getColleageName();
         templateOne.colleageMajor = templateOneDto.getColleageMajor();
