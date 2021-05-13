@@ -3,13 +3,12 @@
 REPOSITORY=/home/ec2-user/app/step2
 
 echo "build!"
-cp $REPOSITORY/zip/*.jar $REPOSITORY
+cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "what is current java process ID?"
 CURRENT_PID=$(pgrep java)
 echo "$CURRENT_PID"
 
-# shellcheck disable=SC2236
 if [ ! -z "$CURRENT_PID" ]; then
   kill -9 "$CURRENT_PID"
   sleep  5

@@ -75,7 +75,7 @@ public class TemplateOne {
         templateOne.highschoolName = templateOneDto.getHighschoolName();
         templateOne.highschoolMajor = templateOneDto.getHighschoolMajor();
         templateOne.highschoolGraduation = templateOneDto.getHighschoolGraduation();
-        templateOne.highschoolScroe = templateOneDto.getHighschoolScroe();
+        templateOne.highschoolScroe = templateOneDto.getHighschoolScore();
         templateOne.colleageDate = templateOneDto.getColleageDate();
         templateOne.colleageName = templateOneDto.getColleageName();
         templateOne.colleageMajor = templateOneDto.getColleageMajor();

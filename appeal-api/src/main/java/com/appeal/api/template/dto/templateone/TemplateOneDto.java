@@ -9,7 +9,6 @@ import com.appeal.api.template.dto.TemplateDto;
 import com.appeal.service.AwsS3Service;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ public class TemplateOneDto implements TemplateDto {
     private String highschoolName;
     private String highschoolMajor;
     private String highschoolGraduation;
-    private String highschoolScroe;
+    private String highschoolScore;
     private String colleageDate;
     private String colleageName;
     private String colleageMajor;
@@ -59,7 +58,7 @@ public class TemplateOneDto implements TemplateDto {
         templateOneDto.highschoolName = dto.getHighschoolName();
         templateOneDto.highschoolMajor = dto.getHighschoolMajor();
         templateOneDto.highschoolGraduation = dto.getHighschoolGraduation();
-        templateOneDto.highschoolScroe = dto.getHighschoolScore();
+        templateOneDto.highschoolScore = dto.getHighschoolScore();
         templateOneDto.colleageDate = dto.getCollegeDate();
         templateOneDto.colleageName = dto.getCollegeName();
         templateOneDto.colleageMajor = dto.getCollegeMajor();
