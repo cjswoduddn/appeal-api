@@ -73,5 +73,7 @@ todo: TemplateService설계 문제 해결하고 Response 추가 적용 예정
 - spring cloud를 활용해서 마이크로서비스로 이전 작업 중
 - github URL : [여기](https://github.com/cjswoduddn/appeal-msa)
 
+5.1(2021-05-24)
+- MemberService signUp()에서 redis와 hibernate 트랜잭션 동기화
 
 
