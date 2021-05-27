@@ -7,11 +7,13 @@ import com.appeal.exception.DuplicateEmailException;
 import com.appeal.exception.FailValidEmailExcetion;
 import com.appeal.exception.NotFoundMemberException;
 import com.appeal.service.MailService;
+import com.appeal.service.RedisService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.serializer.RedisElementReader;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
@@ -26,7 +28,7 @@ class MemberServiceTest {
     MemberRepository memberRepository;
     MailService mailService;
     PasswordEncoder passwordEncoder;
-    StringRedisTemplate redisTemplate;
+    RedisService redisService;
 
     MemberDto dto;
     final String DUPLICATE = "DUPLICATE";
@@ -37,8 +39,8 @@ class MemberServiceTest {
         memberRepository = mock(MemberRepository.class);
         mailService = mock(MailService.class);
         passwordEncoder = mock(PasswordEncoder.class);
-        redisTemplate = mock(StringRedisTemplate.class);
-        memberService = new MemberService(memberRepository, mailService, passwordEncoder, redisTemplate);
+        redisService = mock(RedisService.class);
+        memberService = new MemberService(memberRepository, mailService, passwordEncoder, redisService);
         dto = new MemberDto();
     }
 
@@ -51,35 +53,6 @@ class MemberServiceTest {
         when(memberRepository.findByEmail(dto.getEmail())).thenReturn(Optional.of(mock(Member.class)));
         //then
         assertThrows(DuplicateEmailException.class, ()->memberService.signUp(dto));
-    }
-
-    @Test
-    @DisplayName("레디스에서 코드에 맞는 멤버Id가 없는 경우")
-    public void redisDoesNotHaveId() throws Exception{
-        //given
-        String code = "somecode";
-        ValueOperations ops = mock(ValueOperations.class);
-        //when
-        when(redisTemplate.opsForValue()).thenReturn(ops);
-        when(ops.get(code)).thenReturn(null);
-        //then
-        assertThrows(FailValidEmailExcetion.class, ()->memberService.validSignUp(code));
-    }
-
-    @Test
-    @DisplayName("레디스에서 얻은 아이디가 DB에 등록이 안돼 있는 경우")
-    public void fromRedisIdNotFoundDB() throws Exception{
-        //given
-        String code = "somecode";
-        String id = "1";
-        Long lid = 1L;
-        ValueOperations ops = mock(ValueOperations.class);
-        //when
-        when(redisTemplate.opsForValue()).thenReturn(ops);
-        when(ops.get(code)).thenReturn(id);
-        when(memberRepository.findById(lid)).thenReturn(Optional.empty());
-        //then
-        assertThrows(NotFoundMemberException.class, ()->memberService.validSignUp(code));
     }
 
 }

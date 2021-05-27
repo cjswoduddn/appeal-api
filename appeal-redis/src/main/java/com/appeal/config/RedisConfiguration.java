@@ -1,4 +1,5 @@
-package com.appeal.api.config.redis;
+package com.appeal.config;
+
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +9,7 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 @Configuration
-public class RedisConfiguraion {
+public class RedisConfiguration {
 
     @Value("${spring.redis.host}")
     private String host;
