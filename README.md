@@ -76,4 +76,9 @@ todo: TemplateService설계 문제 해결하고 Response 추가 적용 예정
 5.1(2021-05-24)
 - MemberService signUp()에서 redis와 hibernate 트랜잭션 동기화
 
+5.2(2021-05-27)
+- appeal-redis 라이브러리 모듈 추가 및 RedisService 분리
+- code key에 대한 expire 12시간으로 명시
+
+
 

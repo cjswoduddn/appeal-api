@@ -10,13 +10,12 @@ import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.exception.NotFoundMemberException;
 import com.appeal.service.MailService;
+import com.appeal.service.RedisService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,14 +25,13 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final MailService mailService;
     private final PasswordEncoder passwordEncoder;
-    private final StringRedisTemplate redisTemplate;
+    private final RedisService redisService;
 
     public void signUp(MemberDto dto) {
         validDuplicateEmail(dto);
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         Member member = memberRepository.save(Member.createMember(dto));
-        String code = mailService.sendVaildCodeToMember(dto.getEmail());
-        redisTemplate.opsForValue().set(code, Long.toString(member.getId()));
+        redisService.saveCodeEmail(mailService.sendVaildCodeToMember(member.getEmail()), member.getEmail());
     }
 
     private void validDuplicateEmail(MemberDto dto) {
@@ -46,7 +44,7 @@ public class MemberService {
 
 
     public void validSignUp(String code) {
-        String memberId = Optional.ofNullable(redisTemplate.opsForValue().get(code))
+        String memberId = redisService.getEmail(code)
                 .orElseThrow(() -> new FailValidEmailExcetion(ErrorCode.FAIL_VALID_EMAIL));
 
         memberRepository

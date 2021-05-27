@@ -34,7 +34,6 @@ subprojects {
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation 'org.springframework.boot:spring-boot-starter-security'
         implementation 'org.springframework.boot:spring-boot-starter-validation'
-        implementation 'org.springframework.boot:spring-boot-starter-data-redis'
         implementation 'org.springframework.session:spring-session-data-redis'
         compileOnly 'org.projectlombok:lombok'
         runtimeOnly 'com.h2database:h2'
@@ -51,6 +50,7 @@ project(':appeal-api') {
         compile project(':appeal-aws-s3')
         compile project(':appeal-mail')
         compile project(':appeal-common')
+        compile project(':appeal-redis')
     }
 }
 
