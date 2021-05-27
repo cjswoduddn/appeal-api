@@ -80,5 +80,9 @@ todo: TemplateService설계 문제 해결하고 Response 추가 적용 예정
 - appeal-redis 라이브러리 모듈 추가 및 RedisService 분리
 - code key에 대한 expire 12시간으로 명시
 
+6.0(2021-05-27)
+- batch service 추가
+    - 매일 새벽 3시 인증되지 않고 만든 지 12시간이 지난 계정은 테이블에서 삭제
+    
 
 
