@@ -16,6 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+
 
 @Service
 @RequiredArgsConstructor
@@ -47,10 +49,11 @@ public class MemberService {
         String email = redisService.getEmail(code)
                 .orElseThrow(() -> new FailValidEmailExcetion(ErrorCode.FAIL_VALID_EMAIL));
 
-        memberRepository
+        Member member = memberRepository
                 .findByEmail(email)
-                .orElseThrow(()->new NotFoundMemberException(ErrorCode.NOT_FOUND_MEMBER))
-                .successEmailValid();
+                .orElseThrow(() -> new NotFoundMemberException(ErrorCode.NOT_FOUND_MEMBER));
+        member.successEmailValid();
+        memberRepository.save(member);
     }
 
     @Transactional
