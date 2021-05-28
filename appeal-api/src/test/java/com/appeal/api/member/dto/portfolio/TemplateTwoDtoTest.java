@@ -4,7 +4,7 @@ import com.appeal.api.portfolio.dto.PortfolioFileDto;
 import com.appeal.api.template.dto.templatetwo.TemplateTwoDto;
 import com.appeal.api.template.dto.templatetwo.TemplateTwoFileDto;
 import com.appeal.exception.UnexpectedMethodArgumentNullPointerException;
-import com.appeal.service.AwsS3Service;
+import com.appeal.api.redis.service.AwsS3Service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

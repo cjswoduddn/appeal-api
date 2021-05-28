@@ -1,4 +1,4 @@
-package com.appeal.service;
+package com.appeal.api.redis.service;
 
 import com.appeal.code.ErrorCode;
 import com.appeal.exception.FailSendMailException;

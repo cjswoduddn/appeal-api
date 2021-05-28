@@ -1,7 +1,7 @@
 package com.appeal.api.template.dto.templateone;
 
 import com.appeal.api.portfolio.dto.PortfolioFileDto;
-import com.appeal.service.AwsS3Service;
+import com.appeal.api.redis.service.AwsS3Service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -4,16 +4,11 @@ import com.appeal.api.member.domain.Member;
 import com.appeal.api.member.dto.MemberDto;
 import com.appeal.api.member.repository.MemberRepository;
 import com.appeal.exception.DuplicateEmailException;
-import com.appeal.exception.FailValidEmailExcetion;
-import com.appeal.exception.NotFoundMemberException;
-import com.appeal.service.MailService;
-import com.appeal.service.RedisService;
+import com.appeal.api.redis.service.MailService;
+import com.appeal.api.redis.service.RedisService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.data.redis.serializer.RedisElementReader;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
