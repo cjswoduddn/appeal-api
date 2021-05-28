@@ -1,4 +1,4 @@
-package com.appeal.service;
+package com.appeal.api.redis.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;

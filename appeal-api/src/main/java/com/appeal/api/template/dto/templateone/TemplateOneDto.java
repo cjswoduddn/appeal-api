@@ -6,7 +6,7 @@ import com.appeal.api.template.domain.templateone.TemplateOne;
 import com.appeal.api.template.domain.templateone.TemplateOneCareer;
 import com.appeal.api.template.domain.templateone.TemplateOneCertificate;
 import com.appeal.api.template.dto.TemplateDto;
-import com.appeal.service.AwsS3Service;
+import com.appeal.api.redis.service.AwsS3Service;
 import lombok.Getter;
 import lombok.Setter;
 

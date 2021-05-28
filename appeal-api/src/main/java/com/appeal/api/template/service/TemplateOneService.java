@@ -12,7 +12,7 @@ import com.appeal.code.ErrorCode;
 import com.appeal.exception.NotAuthorizationException;
 import com.appeal.exception.NotFoundMemberException;
 import com.appeal.exception.NotFoundPortfolioException;
-import com.appeal.service.AwsS3Service;
+import com.appeal.api.redis.service.AwsS3Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

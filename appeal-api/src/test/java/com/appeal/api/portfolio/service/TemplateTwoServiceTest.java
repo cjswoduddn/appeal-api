@@ -9,7 +9,7 @@ import com.appeal.api.template.dto.templatetwo.TemplateTwoDto;
 import com.appeal.api.template.dto.templatetwo.TemplateTwoFileDto;
 import com.appeal.api.template.repository.TemplateTwoRepository;
 import com.appeal.api.template.service.TemplateTwoService;
-import com.appeal.service.AwsS3Service;
+import com.appeal.api.redis.service.AwsS3Service;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

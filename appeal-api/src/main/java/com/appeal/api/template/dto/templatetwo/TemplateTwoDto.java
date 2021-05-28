@@ -8,7 +8,7 @@ import com.appeal.api.portfolio.dto.PortfolioDto;
 import com.appeal.api.template.dto.TemplateDto;
 import com.appeal.code.ErrorCode;
 import com.appeal.exception.UnexpectedMethodArgumentNullPointerException;
-import com.appeal.service.AwsS3Service;
+import com.appeal.api.redis.service.AwsS3Service;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

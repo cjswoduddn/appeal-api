@@ -1,4 +1,4 @@
-package com.appeal.service;
+package com.appeal.api.redis.service;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;

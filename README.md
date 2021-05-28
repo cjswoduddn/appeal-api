@@ -83,6 +83,8 @@ todo: TemplateService설계 문제 해결하고 Response 추가 적용 예정
 6.0(2021-05-27)
 - batch service 추가
     - 매일 새벽 3시 인증되지 않고 만든 지 12시간이 지난 계정은 테이블에서 삭제
+- spring boot 버전 업 2.4.2 -> 2.4.5
+    - spring data redis 버전 호환성 이슈 해결(자세한 원인 파악 중)
     
 
 
