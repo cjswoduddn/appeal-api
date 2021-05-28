@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -27,6 +26,7 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final RedisService redisService;
 
+    @Transactional
     public void signUp(MemberDto dto) {
         validDuplicateEmail(dto);
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
@@ -44,15 +44,16 @@ public class MemberService {
 
 
     public void validSignUp(String code) {
-        String memberId = redisService.getEmail(code)
+        String email = redisService.getEmail(code)
                 .orElseThrow(() -> new FailValidEmailExcetion(ErrorCode.FAIL_VALID_EMAIL));
 
         memberRepository
-                .findById(Long.parseLong(memberId))
+                .findByEmail(email)
                 .orElseThrow(()->new NotFoundMemberException(ErrorCode.NOT_FOUND_MEMBER))
                 .successEmailValid();
     }
 
+    @Transactional
     public void updateMemberInfo(MemberSession memberSession, UpdateMemberDto dto) {
         Member member = memberRepository
                 .findById(memberSession.getId())

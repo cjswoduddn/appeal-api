@@ -19,10 +19,11 @@ public class RedisService {
         redisTemplate.opsForValue().set(code, email, 12L, TimeUnit.HOURS);
     }
 
-    @Transactional
     public Optional<String> getEmail(String code) {
-        return Optional.ofNullable(
-                redisTemplate.opsForValue().get(code)
-        );
+//        return Optional.ofNullable(
+//                redisTemplate.opsForValue().get(code)
+//        );
+        String string = redisTemplate.opsForValue().get(code);
+        return Optional.ofNullable(string);
     }
 }
