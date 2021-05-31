@@ -16,8 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +32,9 @@ public class MemberService {
         validDuplicateEmail(dto);
         dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         Member member = memberRepository.save(Member.createMember(dto));
-        redisService.saveCodeEmail(mailService.sendVaildCodeToMember(member.getEmail()), member.getEmail());
+        String code = getRandomString(20);
+        redisService.saveCodeEmail(code, member.getEmail());
+        mailService.sendVaildCodeToMember(member.getEmail(), code);
     }
 
     private void validDuplicateEmail(MemberDto dto) {
@@ -64,6 +65,17 @@ public class MemberService {
                     throw new NotFoundMemberException(ErrorCode.NOT_FOUND_MEMBER);
                 });
         member.updateInfo(dto);
+    }
+
+    private String getRandomString( int length ){
+        char[] charaters = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
+                'r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9'};
+        StringBuffer sb = new StringBuffer();
+        Random rn = new Random();
+        for( int i = 0 ; i < length ; i++ ){
+            sb.append( charaters[ rn.nextInt( charaters.length ) ] );
+        }
+        return sb.toString();
     }
 
 }

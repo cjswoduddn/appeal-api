@@ -20,10 +20,9 @@ public class MailService {
     @Value("${spring.mail.message}")
     private String targetUrl;
 
-    public String sendVaildCodeToMember(String email){
+    public String sendVaildCodeToMember(String email, String code){
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
-        String code = getRandomString(20);
         try {
             helper.setTo(email);
             helper.setSubject("인증하세용");
@@ -37,14 +36,4 @@ public class MailService {
         }
     }
 
-    private String getRandomString( int length ){
-        char[] charaters = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
-                'r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9'};
-        StringBuffer sb = new StringBuffer();
-        Random rn = new Random();
-        for( int i = 0 ; i < length ; i++ ){
-            sb.append( charaters[ rn.nextInt( charaters.length ) ] );
-        }
-        return sb.toString();
-    }
 }
